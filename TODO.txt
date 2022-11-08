@@ -1,0 +1,14 @@
+Things todo:
+
+Create basic webpage layout.
+  - header
+  - footer
+  - main
+  - main cards
+  - side bar
+  - css
+
+Create functionality of making todo items.
+
+Create layout of todo item.
+  
