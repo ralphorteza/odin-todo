@@ -1,0 +1,1 @@
+(()=>{const e=document.createElement("div");e.textContent="hell world!",document.body.appendChild(e)})();
