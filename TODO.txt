@@ -7,7 +7,8 @@ Create basic webpage layout.
   - main cards
   - side bar
   - css
-
+  - fix layout
+  
 Create functionality of making todo items.
 
 Create layout of todo item.
