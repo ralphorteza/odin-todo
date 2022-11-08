@@ -1,6 +1,14 @@
 import './style.css';
-
+import makeWebpage from './webpage/page';
 const content = () => {
-  const content  = document.querySelector('#content');
+  const content = document.querySelector('#content');
+  const page = makeWebpage();
 
-}
+  content.append(page.sidebar);
+  content.append(page.header);
+  content.append(page.main);
+  content.append(page.footer);
+
+};
+
+content();
