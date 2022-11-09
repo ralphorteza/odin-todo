@@ -1,15 +1,17 @@
 Things todo:
 
-Create basic webpage layout.
+Create basic webpage layout. DONE 11/8/22
   - header
   - footer
   - main
   - main cards
   - side bar
   - css
-  - fix layout
-  
+
 Create functionality of making todo items.
+  - add task button
+  - event listener
+  - fields
 
 Create layout of todo item.
   

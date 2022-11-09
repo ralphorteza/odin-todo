@@ -50,4 +50,4 @@ const makeWebpage = () => {
 };
 
 
-export default makeWebpage;
+export {makeWebpage, makeCard};
