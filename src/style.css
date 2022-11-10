@@ -4,8 +4,11 @@ body {
  margin: 0%;
 }
 #content {
+  position: relative;
+
   height: 100vh;
   width: auto;
+
   display: grid;
   gap: 4px;
   grid-template-columns: repeat(4, 1fr);
@@ -13,7 +16,7 @@ body {
 
 }
 
-:is(#header, #sidebar, #main, #footer, .card) {
+:is(#header, #sidebar, #main, #footer, #form-container, .card) {
   border: 2px solid black;
 }
 
@@ -59,3 +62,67 @@ body {
   height: 50px;
   width: 80px;
 }
+
+
+/* Form Container */
+#form-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+  height: auto;
+
+  /* Fixes position to the middle of viewport. */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+fieldset {
+  margin: 0%;
+  border: none;
+}
+
+fieldset > div {
+  margin-bottom: 20px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+button, label, input {
+  display: block;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px;
+  height: 30px;
+}
+
+input {
+  box-shadow: inset 1px 1px 3px #ccc;
+  border-radius: 5px;
+}
+
+input:hover, input:focus {
+  background-color: #eee;
+}
+
+input + span {
+  position: relative;
+}
+
+input:required + span::after{
+  font-size: 0.7rem;
+  position: absolute;
+  content: "required";
+  color: white;
+  background-color: black;
+  padding: 5px 10px;
+  top: -26px;
+  left: -70px;
+}
+
