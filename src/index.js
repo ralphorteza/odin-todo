@@ -1,5 +1,7 @@
 import './style.css';
 import {makeWebpage, makeCard} from './webpage/page';
+import makeButton from './webpage/buttons';
+
 const content = () => {
   const content = document.getElementById('content');
   const page = makeWebpage();
@@ -13,14 +15,27 @@ const content = () => {
 
   const main = page.main;
   content.append(main);
-  page.main.append(makeCard());
-  page.main.append(makeCard());
+  main.append(makeCard());
+  main.append(makeCard());
+  const btnAddTask = makeButton("add-task", "Add");
+  //console.log(btnAddTask.id);
+  main.append(btnAddTask)
+  const addListener = addTaskListener(btnAddTask);
+
   const footer = page.footer;
   content.append(footer);
 
 };
 
+const addTaskListener = (btnPressed) => {
+  const btn = document.querySelector(`#${btnPressed.id}`);
+  btn.addEventListener('click', () => {
+    main.append(makeCard());
+  });
+}
+/* 
 const navigate = () => {
-};
+  
+}; */
 
 content();
