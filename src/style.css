@@ -102,6 +102,7 @@ button, label, input {
   height: 30px;
 }
 
+
 input {
   box-shadow: inset 1px 1px 3px #ccc;
   border-radius: 5px;
@@ -126,3 +127,9 @@ input:required + span::after{
   left: -70px;
 }
 
+#task-desc {
+  margin: 0;
+  padding: 0;
+  width: 274px;
+  height: 100px;
+}

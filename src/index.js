@@ -9,10 +9,10 @@ const makeForm = () => {
   const fieldset = document.createElement('fieldset');
   formContainer.append(fieldset);
 
-  const taskTitle = createInputAndLabel("task-title", "Task", "text", true);
+  const taskTitle = createInputAndLabel("task-title", "Task", "input", true);
   fieldset.append(taskTitle);
 
-  const taskDesc = createInputAndLabel("task-desc", "Description", "text", false);
+  const taskDesc = createInputAndLabel("task-desc", "Description", "textarea", false);
   fieldset.append(taskDesc);
 
   return formContainer;
@@ -31,7 +31,7 @@ const createInputAndLabel = (id, labelText, inputType, booleanValue) => {
   label.innerText = `${_text}: `;
   pairContainer.append(label);
 
-  const input = document.createElement('input');
+  const input = document.createElement(_type);
   input.setAttribute('id', _id);
   input.setAttribute('name', _id);
   input.required = _flag;
