@@ -103,7 +103,7 @@ button, label, input, select {
 }
 
 
-input {
+input, input[type="date"] {
   box-shadow: inset 1px 1px 3px #ccc;
   border-radius: 5px;
 }

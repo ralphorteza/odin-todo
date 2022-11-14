@@ -18,10 +18,35 @@ const makeForm = () => {
 
   const selectPriority = createSelect('task-priority', 'Priority');
   fieldset.append(selectPriority);
-  const optionLow = createOption('low');
+
+  const date = createCalendar('task-date', 'Due Date');
+  fieldset.append(date);
 
   return formContainer;
 }
+
+const createCalendar = (id, labelText) => {
+  const _id = String(id);
+  const _text = String(labelText);
+
+  const pairContainer = document.createElement('div');
+
+  const label = document.createElement('label');
+  label.setAttribute('for', _id);
+  label.innerText = `${_text}: `;
+  pairContainer.append(label);
+
+  const input = document.createElement('input');
+  input.setAttribute('id', _id);
+  input.setAttribute('name', _id);
+  input.setAttribute('type', 'date');
+  pairContainer.append(input);
+
+  const span = document.createElement('span');
+  pairContainer.append(span);
+  
+  return pairContainer;
+};
 
 const createSelect = (id, label) => {
   const _id = String(id);
