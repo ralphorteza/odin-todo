@@ -22,3 +22,8 @@ Create form DONE 11/14/22
   - priority
   - date
   - add button
+
+Create form functionality
+  - get form addEventListener
+  - add item addEventListener
+  - cancel item addEventListener
