@@ -90,7 +90,7 @@ fieldset > div {
   flex-flow: row wrap;
 }
 
-button, label, input {
+button, label, input, select {
   display: block;
   font-family: inherit;
   font-size: 100%;
@@ -130,6 +130,8 @@ input:required + span::after{
 #task-desc {
   margin: 0;
   padding: 0;
+  
+  resize: none;
   width: 274px;
   height: 100px;
 }

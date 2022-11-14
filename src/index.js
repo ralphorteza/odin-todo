@@ -1,6 +1,7 @@
 import './style.css';
 import {makeWebpage, makeCard} from './webpage/page';
 import makeButton from './webpage/buttons';
+import { add } from 'lodash';
 
 const makeForm = () => {
   const formContainer = document.createElement('div');
@@ -9,14 +10,52 @@ const makeForm = () => {
   const fieldset = document.createElement('fieldset');
   formContainer.append(fieldset);
 
-  const taskTitle = createInputAndLabel("task-title", "Task", "input", true);
+  const taskTitle = createInputAndLabel('task-title', 'Task', 'input', true);
   fieldset.append(taskTitle);
 
-  const taskDesc = createInputAndLabel("task-desc", "Description", "textarea", false);
+  const taskDesc = createInputAndLabel('task-desc', 'Description', 'textarea', false);
   fieldset.append(taskDesc);
+
+  const selectPriority = createSelect('task-priority', 'Priority');
+  fieldset.append(selectPriority);
+  const optionLow = createOption('low');
 
   return formContainer;
 }
+
+const createSelect = (id, label) => {
+  const _id = String(id);
+  const _text = String(label);
+
+  const selectContainer = document.createElement('div');
+
+  const textLabel = document.createElement('label');
+  textLabel.setAttribute('for', _id);
+  textLabel.innerText = `${_text}: `;
+  selectContainer.append(textLabel);
+
+  const select = document.createElement('select');
+  select.setAttribute('id', _id);
+  select.setAttribute('name', _id);
+  selectContainer.append(select);
+
+  const optionLow = createOption('low');
+  select.add(optionLow, 0);
+  const optionNormal = createOption('normal');
+  select.add(optionNormal, 1);
+  const optionHigh = createOption('high');
+  select.add(optionHigh, 2);
+
+  return selectContainer;
+};
+
+const createOption = (optionName) => {
+  const _name = optionName;
+  const option = document.createElement('option');
+  option.value = _name;
+  option.innerText = String (_name);
+  return option;
+};
 
 const createInputAndLabel = (id, labelText, inputType, booleanValue) => {
   const _id = String(id);
@@ -65,7 +104,7 @@ const content = () => {
 //   content.append(main);
 //   main.append(makeCard());
 //   main.append(makeCard());
-//   const btnAddTask = makeButton("add-task", "Add");
+//   const btnAddTask = makeButton('add-task', 'Add');
 //   //console.log(btnAddTask.id);
 //   main.append(btnAddTask)
 //   const addListener = addTaskListener(btnAddTask);

@@ -14,4 +14,11 @@ Create functionality of making todo items.
   - fields
 
 Create layout of todo item.
-  
+
+
+Create form
+  - task
+  - Description
+  - priority
+  - date
+  - add button
