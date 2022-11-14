@@ -90,7 +90,7 @@ fieldset > div {
   flex-flow: row wrap;
 }
 
-button:not(#create-task, #cancel-task), label, input, select {
+button:not(#create-task, #cancel-task, #add-task), label, input, select {
   display: block;
   font-family: inherit;
   font-size: 100%;
