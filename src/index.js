@@ -22,7 +22,28 @@ const makeForm = () => {
   const date = createCalendar('task-date', 'Due Date');
   fieldset.append(date);
 
+  const btnsContainer = document.createElement('div');
+  btnsContainer.classList.add('btn-container');
+  fieldset.append(btnsContainer);
+  const createTaskBtn = createButton('create-task', 'Add', 'submit');
+  const cancelTaskBtn = createButton('cancel-task', 'Cancel', 'button');
+
+  btnsContainer.append(createTaskBtn);
+  btnsContainer.append(cancelTaskBtn);
+
   return formContainer;
+}
+
+const createButton = (id, label, type) => {
+  const _id = String (id);
+  const _type = String (type);
+  const _label = String (label);
+  const btn = document.createElement('button');
+  btn.innerText = _label;
+  btn.setAttribute('id', _id);
+  btn.setAttribute('type', _type);
+
+  return btn;
 }
 
 const createCalendar = (id, labelText) => {
