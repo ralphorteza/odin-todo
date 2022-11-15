@@ -18,16 +18,19 @@ const content = () => {
 
   const main = page.main;
   content.append(main);
-  main.append(makeCard());
-  main.append(makeCard());
-  const btnAddTask = makeButton('add-task', 'Add');
+  // main.append(makeCard());
+  // main.append(makeCard());
+  //const btnAddTask = makeButton('add-task', 'Add');
   //console.log(btnAddTask.id);
-  main.append(btnAddTask)
-  const addListener = addTaskListener(btnAddTask);
+  //main.append(btnAddTask)
+  //const addListener = addTaskListener(btnAddTask);
+  const form = makeForm();
+  main.append(form);
 
   const footer = page.footer;
   content.append(footer);
 
+  const nav = navigate();
 };
 
 const addTaskListener = (btnPressed) => {
@@ -37,8 +40,19 @@ const addTaskListener = (btnPressed) => {
   });
 }
 
+// TODO!!
 const navigate = () => {
+  const main = document.getElementById('main');
+  const addBtn = document.querySelector('#add-task');
+  const cancelBtn = document.querySelector('#cancel-task');
+  const createBtn = document.querySelector('#create-task');
   
+  addBtn.addEventListener('click', () => {
+    //main.append(form);
+  });
+  cancelBtn.addEventListener('click', () => {
+    //main.remove(form);
+  });
 };
 
 content();

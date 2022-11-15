@@ -1,3 +1,4 @@
+import makeButton from './buttons.js';
 
 // TODO: header
 const makeHeader = () => {
@@ -19,6 +20,9 @@ const makeFooter = () => {
 const makeMain = () => {
   const mainContainer = document.createElement('div');
   mainContainer.setAttribute('id', 'main');
+
+  const btnAddTask = makeButton('add-task', 'Add');
+  mainContainer.append(btnAddTask);
 
   return mainContainer;
 };
