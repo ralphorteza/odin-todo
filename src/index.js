@@ -8,16 +8,19 @@ import makeForm from './webpage/form.js';
 const content = () => {
   const content = document.getElementById('content');
   const page = makeWebpage();
+  
+  const header = page.header;
+  const sidebar = page.sidebar;
+  const main = page.main;
+  const footer = page.footer;
+  
+  content.append(header);
+  content.append(sidebar);
+  content.append(main);
+  content.append(footer);
+  
   //const card = makeCard();
 
-  const header = page.header;
-  content.append(header);
-
-  const sidebar = page.sidebar;
-  content.append(sidebar);
-
-  const main = page.main;
-  content.append(main);
   // main.append(makeCard());
   // main.append(makeCard());
   //const btnAddTask = makeButton('add-task', 'Add');
@@ -27,8 +30,6 @@ const content = () => {
   const form = makeForm();
   main.append(form);
 
-  const footer = page.footer;
-  content.append(footer);
 
   const nav = navigate();
 };
