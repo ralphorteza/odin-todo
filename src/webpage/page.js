@@ -35,6 +35,13 @@ const makeCard = () => {
   return cardContainer;
 };
 
+const makeOverlay = () => {
+  const overlay = document.createElement('div');
+  overlay.setAttribute('id', 'overlay');
+
+  return overlay;
+}
+
 // TODO: sidebar
 const makeSidebar = () => {
   const sidebarContainer = document.createElement('div');
@@ -49,8 +56,9 @@ const makeWebpage = () => {
   const header = makeHeader();
   const main = makeMain();
   const footer = makeFooter();
+  const overlay = makeOverlay();
 
-  return {sidebar, header, main, footer};
+  return {sidebar, header, main, footer, overlay};
 };
 
 
