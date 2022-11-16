@@ -114,7 +114,7 @@ const makeForm = () => {
   const selectPriority = createSelect('task-priority', 'Priority');
   const date = createCalendar('task-date', 'Due Date');
 
-  const createTaskBtn = createButton('create-task', 'Add', 'submit');
+  const createTaskBtn = createButton('create-task', 'Create', 'submit');
   const cancelTaskBtn = createButton('cancel-task', 'Cancel', 'button');
 
   fieldset.append(taskTitle);

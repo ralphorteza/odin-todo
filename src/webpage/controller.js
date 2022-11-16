@@ -23,6 +23,7 @@ const createFormController = () => {
   };
 
   // TODO: push information into card
+  // BUG: after pressing 'Create' and pressing 'Enter' it makes multiple cards.
   const _createTaskCard = () => {
     const card = makeCard();
     main.append(card);
