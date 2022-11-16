@@ -6,24 +6,23 @@ import makeForm from './webpage/form.js';
 
 const content = () => {
   const content = document.getElementById('content');
-  const page = makeWebpage();
   const overlay = document.createElement('div');
   overlay.setAttribute('id', 'overlay');
   // overlay.classList.add('active');
-  content.append(overlay);
-
+  
+  const page = makeWebpage();
   const header = page.header;
   const sidebar = page.sidebar;
   const main = page.main;
   const footer = page.footer;
+  const form = makeForm();
   
   content.append(header);
   content.append(sidebar);
   content.append(main);
   content.append(footer);
-
-  const form = makeForm();
-  main.append(form);
+  content.append(form);
+  content.append(overlay);
 
   const openFormBtns = document.querySelectorAll('#add-task');
   const closeFormBtns = document.querySelectorAll('#cancel-task');
@@ -33,6 +32,13 @@ const content = () => {
     button.addEventListener('click', () => {
       const modal = document.querySelector('#add-task');
       openForm(form, modal, overlay)
+    })
+  });
+
+  overlay.addEventListener('click', () => {
+    const modals = document.querySelectorAll('#cancel-task');
+    modals.forEach(modal => {
+      closeForm(form, modal, overlay);
     })
   })
 
