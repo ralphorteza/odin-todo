@@ -27,6 +27,8 @@ Create form functionality
   - make add button go behing overlay!    DONE
     + move it from main to content child?
   - get form addEventListener     DONE
-  - add item addEventListener
   - cancel item addEventListener  DONE
-  - refactor module!!!
+  - refactor module!!!            DONE
+  - add item addEventListener
+    + have information in card
+    + put information into local storage
