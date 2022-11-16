@@ -29,3 +29,4 @@ Create form functionality
   - get form addEventListener     DONE
   - add item addEventListener
   - cancel item addEventListener  DONE
+  - refactor module!!!
