@@ -187,3 +187,12 @@ input:required + span::after{
   opacity: 1;
   pointer-events: all;
 }
+
+
+/* #create-task.active {
+  pointer-events: all;
+}
+
+#create-task {
+  pointer-events: none;
+} */

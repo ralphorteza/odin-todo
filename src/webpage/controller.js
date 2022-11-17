@@ -21,29 +21,34 @@ const createFormController = () => {
     form.classList.remove('active');
     overlay.classList.remove('active');
   };
-
+  
   // TODO: push information into card
   // BUG: after pressing 'Create' and pressing 'Enter' it makes multiple cards.
-  const _createTaskCard = () => {
+  const _createTaskCard = (item) => {
+    if (item == null) return;
     const card = makeCard();
     main.append(card);
-    _closeForm(form, overlay);
+    console.log('hello!');
   };
-
+  
   openFormBtns.addEventListener('click', () => {
     _openForm(form, overlay)
   });
-
+  
   createTaskBtn.addEventListener('click', () => {
-    _createTaskCard();
-  });
-
-  overlay.addEventListener('click', () => {
+    _createTaskCard(form);
     _closeForm(form, overlay);
   });
 
+
+  overlay.addEventListener('click', () => {
+    _closeForm(form, overlay);
+    console.log('hello from overlay')
+  });
+
   closeFormBtns.addEventListener('click', () => {
-    _closeForm(form, overlay)
+    _closeForm(form, overlay);
+    console.log('hello from cancel button');
   });  
 };
 
