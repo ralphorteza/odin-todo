@@ -30,7 +30,38 @@ const makeMain = () => {
 // TODO: card
 const makeCard = () => {
   const cardContainer = document.createElement('div');
+  const checkBox = document.createElement('input');
+  const title = document.createElement('div');
+  const date = document.createElement('div');
+  const priority = document.createElement('div');
+  const editBtn = document.createElement('button');
+  const deleteBtn = document.createElement('button');
+
+  
   cardContainer.classList.add('card');
+  title.classList.add('title');
+  date.classList.add('date');
+  priority.classList.add('priority');
+  editBtn.classList.add('edit');
+  deleteBtn.classList.add('delete');
+
+  checkBox.setAttribute('type', 'checkbox');
+  
+  title.textContent = 'title of item';
+  date.textContent = '12/12/2999';
+  priority.textContent = 'low';
+  editBtn.textContent = 'edit';
+  deleteBtn.textContent = 'delete';
+
+  
+
+
+  cardContainer.append(checkBox);
+  cardContainer.append(title);
+  cardContainer.append(date);
+  cardContainer.append(priority);
+  cardContainer.append(editBtn);
+  cardContainer.append(deleteBtn);
 
   return cardContainer;
 };

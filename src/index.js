@@ -24,6 +24,9 @@ const content = () => {
   content.append(form);
   content.append(overlay);
 
+  const tempCard = makeCard();
+  main.append(tempCard);
+
   const controller = makeController();
 };
 

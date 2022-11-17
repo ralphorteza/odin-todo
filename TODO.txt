@@ -32,3 +32,7 @@ Create form functionality
   - add item addEventListener
     + have information in card
     + put information into local storage
+
+Create card items
+  - make UI (checkbox, title, duedate, delete)
+  - make object function to hold card items
