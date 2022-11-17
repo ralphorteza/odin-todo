@@ -65,10 +65,22 @@ body {
 
 .card {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 3px;
 }
 
-.card > button {
-  
+.card > input[type='checkbox'] {
+  width: 40px;
+}
+
+.card > .edit, .delete {
+  font-size: 100%;
+  padding: 0;
+  margin: 0;
+  padding: 5px;
+  height: 30px;
+  width: 70px;
 }
 
 
@@ -108,7 +120,8 @@ fieldset > div {
   flex-flow: row wrap;
 }
 
-button:not(#create-task, #cancel-task, #add-task), label, input, select {
+/* button:not(#create-task, #cancel-task, #add-task), */
+label, input, select {
   display: block;
   font-family: inherit;
   font-size: 100%;

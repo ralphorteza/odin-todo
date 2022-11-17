@@ -36,7 +36,6 @@ const makeCard = () => {
   const priority = document.createElement('div');
   const editBtn = document.createElement('button');
   const deleteBtn = document.createElement('button');
-
   
   cardContainer.classList.add('card');
   title.classList.add('title');
@@ -52,9 +51,6 @@ const makeCard = () => {
   priority.textContent = 'low';
   editBtn.textContent = 'edit';
   deleteBtn.textContent = 'delete';
-
-  
-
 
   cardContainer.append(checkBox);
   cardContainer.append(title);
