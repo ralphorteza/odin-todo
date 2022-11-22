@@ -1,6 +1,3 @@
-
-import { makeCard } from "./page.js";
-
 const createFormController = () => {
   const main = document.getElementById('main');
   const form = document.getElementById('form-container');
