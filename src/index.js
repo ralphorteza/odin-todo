@@ -23,7 +23,7 @@ const content = () => {
   // content.append(sidebar);
   // content.append(main);
   // content.append(footer);
-  content.append(form);
+  //content.append(form);
   // content.append(overlay);
 
   // const tempCard = makeCard();
