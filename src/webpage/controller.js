@@ -28,12 +28,6 @@ const createFormController = () => {
     if (item == null) return;
     
     console.log(item);
-
-    // const card = makeCard();
-    
-
-    // main.append(card);
-    // console.log('hello!');
   };
   
   openFormBtns.addEventListener('click', () => {
