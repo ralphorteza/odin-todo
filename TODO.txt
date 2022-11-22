@@ -34,5 +34,5 @@ Create form functionality
     + put information into local storage
 
 Create card items
-  - make UI (checkbox, title, duedate, delete)
+  - make UI (checkbox, title, duedate, delete) DONE
   - make object function to hold card items

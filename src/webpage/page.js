@@ -29,7 +29,7 @@ const makeMain = () => {
 
 // TODO: card
 const makeCard = () => {
-  const cardContainer = document.createElement('div');
+  // const cardContainer = document.createElement('div');
   const checkBox = document.createElement('input');
   const title = document.createElement('div');
   const date = document.createElement('div');
@@ -37,7 +37,7 @@ const makeCard = () => {
   const editBtn = document.createElement('button');
   const deleteBtn = document.createElement('button');
   
-  cardContainer.classList.add('card');
+  // cardContainer.classList.add('card');
   title.classList.add('title');
   date.classList.add('date');
   priority.classList.add('priority');
@@ -46,20 +46,28 @@ const makeCard = () => {
 
   checkBox.setAttribute('type', 'checkbox');
   
-  title.textContent = 'title of item';
-  date.textContent = '12/12/2999';
-  priority.textContent = 'low';
+  // title.textContent = 'title of item';
+  // date.textContent = '12/12/2999';
+  // priority.textContent = 'low';
   editBtn.textContent = 'edit';
   deleteBtn.textContent = 'delete';
 
-  cardContainer.append(checkBox);
-  cardContainer.append(title);
-  cardContainer.append(date);
-  cardContainer.append(priority);
-  cardContainer.append(editBtn);
-  cardContainer.append(deleteBtn);
+  // cardContainer.append(checkBox);
+  // cardContainer.append(title);
+  // cardContainer.append(date);
+  // cardContainer.append(priority);
+  // cardContainer.append(editBtn);
+  // cardContainer.append(deleteBtn);
 
-  return cardContainer;
+  // return cardContainer;
+  return {
+    checkBox,
+    title,
+    date,
+    priority,
+    editBtn,
+    deleteBtn
+  };
 };
 
 const makeOverlay = () => {

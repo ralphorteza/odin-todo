@@ -26,9 +26,14 @@ const createFormController = () => {
   // BUG: after pressing 'Create' and pressing 'Enter' it makes multiple cards.
   const _createTaskCard = (item) => {
     if (item == null) return;
-    const card = makeCard();
-    main.append(card);
-    console.log('hello!');
+    
+    console.log(item);
+
+    // const card = makeCard();
+    
+
+    // main.append(card);
+    // console.log('hello!');
   };
   
   openFormBtns.addEventListener('click', () => {
