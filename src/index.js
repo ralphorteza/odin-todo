@@ -1,14 +1,7 @@
-import { add } from 'lodash';
-//  import './style.css';
-import makeController from './controller.js';
-import task from './tasks.js';
-
-const home = [];
+import doms from  './dom.js';
+import Task from './task.js';
 
 const content = () => {
-  const content = document.getElementById('content');
-  const controller = makeController();
-  
+  const dom = doms();
 };
-const st = task();
 content();
