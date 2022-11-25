@@ -17,36 +17,38 @@
       <button id="add-task" type="button">Add</button>
     </div>
     <div id="form-container">
-      <fieldset>
-        <div>
-          <label for="task-title">Task:</label>
-          <input id="task-title" name="task-title" type="text">
-          <span></span>
-        </div>
-        <div>
-          <label for="task-desc">Description:</label>
-          <textarea id="task-desc" name="task-desc"></textarea>
-          <span></span>
-        </div>
-        <div>
-          <label for="task-priority">Priority:</label>
-          <select id="task-priority" name="task-priority">
-            <option value="low">low</option>
-            <option value="normal">normal</option>
-            <option value="high">high</option>
-          </select>
-          <span></span>
-        </div>
-        <div>
-          <label for="task-date">Due Date:</label>
-          <input id="task-date" name="task-date" type="date">
-          <span></span>
-        </div>
-        <div class="btn-container">
-          <button id="create-task" type="submit">Create</button>
-          <button id="cancel-task" type="button">Cancel</button>
-        </div>
-      </fieldset>
+      <form id="form">
+        <fieldset>
+          <div>
+            <label for="task-title">Task:</label>
+            <input id="task-title" name="task-title" type="text">
+            <span></span>
+          </div>
+          <div>
+            <label for="task-desc">Description:</label>
+            <textarea id="task-desc" name="task-desc"></textarea>
+            <span></span>
+          </div>
+          <div>
+            <label for="task-priority">Priority:</label>
+            <select id="task-priority" name="task-priority">
+              <option value="low">low</option>
+              <option value="normal">normal</option>
+              <option value="high">high</option>
+            </select>
+            <span></span>
+          </div>
+          <div>
+            <label for="task-date">Due Date:</label>
+            <input id="task-date" name="task-date" type="date">
+            <span></span>
+          </div>
+          <div class="btn-container">
+            <button id="create-task" type="submit">Create</button>
+            <button id="cancel-task" type="button">Cancel</button>
+          </div>
+        </fieldset>
+      </form>
     </div>
   </div>
   <script src="main.js"></script>

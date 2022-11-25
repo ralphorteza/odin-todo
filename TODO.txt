@@ -28,6 +28,7 @@ Create form functionality
     + move it from main to content child?
   - get form addEventListener     DONE
   - cancel item addEventListener  DONE
+    + click overlay to also cancel
   - refactor module!!!            DONE
   - add item addEventListener
     + have information in card
