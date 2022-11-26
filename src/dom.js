@@ -13,6 +13,7 @@ const makeCard = (title, desc, priority, date, id) => {
   const deleteBtn = document.createElement('button');
 
   cardContainer.classList.add('card');
+  cardContainer.setAttribute('id', id);
   titleDiv.classList.add('title');
   dateDiv.classList.add('date');
   priorityDiv.classList.add('priority');
@@ -34,16 +35,17 @@ const makeCard = (title, desc, priority, date, id) => {
   cardContainer.append(editBtn);
   cardContainer.append(deleteBtn);
 
-  // return cardContainer;
-  // return {
-  //   checkBox,
-  //   title,
-  //   date,
-  //   priority,
-  //   editBtn,
-  //   deleteBtn
-  // };
   return cardContainer;
+};
+
+// TODO: a function to edit an existing card.
+const editCard = (id) => {
+
+};
+
+// TODO: a function to delete a card.
+const deleteCard = (id) => {
+
 };
 
 const doms = () => {
