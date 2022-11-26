@@ -10,17 +10,16 @@ const deleteCard = (idNumber) => {
 
   console.log(`id: ${idNumber}`);
 
-  //let removeIndex = tasks.findIndex(task => task.id === idNumber);
-  const removeIndex = tasks.findIndex( task => {
+  // let removeIndex = tasks.findIndex(task => task.id === idNumber);
+  const removeIndex = tasks.findIndex((task) => {
     if (task.id === idNumber) {
       console.log('hello!');
     }
     return task.id === idNumber;
-  })
+  });
   tasks.splice(removeIndex, 1);
   console.log(removeIndex);
   console.log(tasks);
-
 };
 
 const makeCard = (title, desc, priority, date, id) => {
@@ -42,10 +41,10 @@ const makeCard = (title, desc, priority, date, id) => {
   deleteBtn.classList.add('delete');
 
   checkBox.setAttribute('type', 'checkbox');
-  
-  titleDiv.textContent = String (id);
-  dateDiv.textContent = String (date);
-  priorityDiv.textContent = String (priority);
+
+  titleDiv.textContent = String(id);
+  dateDiv.textContent = String(date);
+  priorityDiv.textContent = String(priority);
   editBtn.textContent = 'edit';
   deleteBtn.textContent = 'delete';
 
@@ -56,12 +55,11 @@ const makeCard = (title, desc, priority, date, id) => {
   cardContainer.append(editBtn);
   cardContainer.append(deleteBtn);
 
-  
   deleteBtn.addEventListener('click', (e) => {
     const card = e.target.parentElement.id;
     deleteCard(card);
   });
-  
+
   return cardContainer;
 };
 
@@ -69,7 +67,6 @@ const makeCard = (title, desc, priority, date, id) => {
 const editCard = (id) => {
 
 };
-
 
 const doms = () => {
   const main = document.querySelector('#main');
@@ -79,7 +76,6 @@ const doms = () => {
   const openFormBtn = document.querySelector('#add-task');
   const closeFormBtns = document.querySelector('#cancel-task');
   const createTaskBtn = document.querySelector('#create-task');
-  
 
   const displayForm = () => {
     formContainer.classList.add('active');
@@ -93,36 +89,36 @@ const doms = () => {
 
   openFormBtn.addEventListener('click', () => {
     displayForm();
-    console.log("open form!");
+    console.log('open form!');
   });
 
   closeFormBtns.addEventListener('click', () => {
     closeForm();
-    console.log("closed form!");
+    console.log('closed form!');
   });
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
-    let title = document.getElementById('task-title').value; 
-    let desc = document.getElementById('task-desc').value;
-    let priority = document.getElementById('task-priority').value;
-    let date = document.getElementById('task-date').value;
-    let id = Date.now();
-    
-    let task = new Task(title, desc, priority, date, id);
+    const title = document.getElementById('task-title').value;
+    const desc = document.getElementById('task-desc').value;
+    const priority = document.getElementById('task-priority').value;
+    const date = document.getElementById('task-date').value;
+    const id = Date.now();
+
+    const task = new Task(title, desc, priority, date, id);
     const card = makeCard(title, desc, priority, date, id);
     main.append(card);
     tasks.push(task);
-    
+
     console.log(title);
 
     console.log(tasks);
     document.getElementById('form').reset();
-    
+
     closeForm();
     console.log(task);
-    console.log("clicked submit!");
+    console.log('clicked submit!');
   });
 };
 
