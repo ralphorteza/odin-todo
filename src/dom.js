@@ -10,21 +10,29 @@ const doms = () => {
   const createTaskBtn = document.querySelector('#create-task');
 
   const tasks = [];
-
-  openFormBtn.addEventListener('click', () => {
+  const displayForm = () => {
     formContainer.classList.add('active');
     overlay.classList.add('active');
+  };
+
+  const closeForm = () => {
+    formContainer.classList.remove('active');
+    overlay.classList.remove('active');
+  };
+
+  openFormBtn.addEventListener('click', () => {
+    displayForm();
     console.log("open form!");
   });
 
   closeFormBtns.addEventListener('click', () => {
-    formContainer.classList.remove('active');
-    overlay.classList.remove('active');
+    closeForm();
     console.log("closed form!");
   });
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
+    
     let title = document.getElementById('task-title').value; 
     let desc = document.getElementById('task-desc').value;
     let priority = document.getElementById('task-priority').value;
@@ -36,8 +44,7 @@ const doms = () => {
     console.log(tasks);
     document.getElementById('form').reset();
     
-    formContainer.classList.remove('active');
-    overlay.classList.remove('active');
+    closeForm();
     console.log(task);
     console.log("clicked submit!");
   });
