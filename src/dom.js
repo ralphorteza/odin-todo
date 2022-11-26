@@ -2,6 +2,27 @@ import Task from './task.js';
 
 const tasks = [];
 
+// TODO: a function to delete a card.
+const deleteCard = (idNumber) => {
+  const card = document.getElementById(idNumber);
+  card.innerHTML = '';
+  card.remove();
+
+  console.log(`id: ${idNumber}`);
+
+  //let removeIndex = tasks.findIndex(task => task.id === idNumber);
+  const removeIndex = tasks.findIndex( task => {
+    if (task.id === idNumber) {
+      console.log('hello!');
+    }
+    return task.id === idNumber;
+  })
+  tasks.splice(removeIndex, 1);
+  console.log(removeIndex);
+  console.log(tasks);
+
+};
+
 const makeCard = (title, desc, priority, date, id) => {
   const cardID = id;
   const cardContainer = document.createElement('div');
@@ -22,7 +43,7 @@ const makeCard = (title, desc, priority, date, id) => {
 
   checkBox.setAttribute('type', 'checkbox');
   
-  titleDiv.textContent = String (title);
+  titleDiv.textContent = String (id);
   dateDiv.textContent = String (date);
   priorityDiv.textContent = String (priority);
   editBtn.textContent = 'edit';
@@ -35,6 +56,12 @@ const makeCard = (title, desc, priority, date, id) => {
   cardContainer.append(editBtn);
   cardContainer.append(deleteBtn);
 
+  
+  deleteBtn.addEventListener('click', (e) => {
+    const card = e.target.parentElement.id;
+    deleteCard(card);
+  });
+  
   return cardContainer;
 };
 
@@ -43,10 +70,6 @@ const editCard = (id) => {
 
 };
 
-// TODO: a function to delete a card.
-const deleteCard = (id) => {
-
-};
 
 const doms = () => {
   const main = document.querySelector('#main');
@@ -56,6 +79,7 @@ const doms = () => {
   const openFormBtn = document.querySelector('#add-task');
   const closeFormBtns = document.querySelector('#cancel-task');
   const createTaskBtn = document.querySelector('#create-task');
+  
 
   const displayForm = () => {
     formContainer.classList.add('active');
