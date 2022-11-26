@@ -1,5 +1,51 @@
 import Task from './task.js';
 
+const tasks = [];
+
+const makeCard = (title, desc, priority, date, id) => {
+  const cardID = id;
+  const cardContainer = document.createElement('div');
+  const checkBox = document.createElement('input');
+  const titleDiv = document.createElement('div');
+  const dateDiv = document.createElement('div');
+  const priorityDiv = document.createElement('div');
+  const editBtn = document.createElement('button');
+  const deleteBtn = document.createElement('button');
+
+  cardContainer.classList.add('card');
+  titleDiv.classList.add('title');
+  dateDiv.classList.add('date');
+  priorityDiv.classList.add('priority');
+  editBtn.classList.add('edit');
+  deleteBtn.classList.add('delete');
+
+  checkBox.setAttribute('type', 'checkbox');
+  
+  titleDiv.textContent = String (title);
+  dateDiv.textContent = String (date);
+  priorityDiv.textContent = String (priority);
+  editBtn.textContent = 'edit';
+  deleteBtn.textContent = 'delete';
+
+  cardContainer.append(checkBox);
+  cardContainer.append(titleDiv);
+  cardContainer.append(dateDiv);
+  cardContainer.append(priorityDiv);
+  cardContainer.append(editBtn);
+  cardContainer.append(deleteBtn);
+
+  // return cardContainer;
+  // return {
+  //   checkBox,
+  //   title,
+  //   date,
+  //   priority,
+  //   editBtn,
+  //   deleteBtn
+  // };
+  return cardContainer;
+};
+
 const doms = () => {
   const main = document.querySelector('#main');
   const form = document.querySelector('#form');
@@ -9,7 +55,6 @@ const doms = () => {
   const closeFormBtns = document.querySelector('#cancel-task');
   const createTaskBtn = document.querySelector('#create-task');
 
-  const tasks = [];
   const displayForm = () => {
     formContainer.classList.add('active');
     overlay.classList.add('active');
@@ -32,7 +77,7 @@ const doms = () => {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    
+
     let title = document.getElementById('task-title').value; 
     let desc = document.getElementById('task-desc').value;
     let priority = document.getElementById('task-priority').value;
@@ -40,7 +85,12 @@ const doms = () => {
     let id = Date.now();
     
     let task = new Task(title, desc, priority, date, id);
+    const card = makeCard(title, desc, priority, date, id);
+    main.append(card);
     tasks.push(task);
+    
+    console.log(title);
+
     console.log(tasks);
     document.getElementById('form').reset();
     
