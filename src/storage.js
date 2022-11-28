@@ -54,10 +54,13 @@ export default class Storage {
   }
 
   static renameTask(projectName, taskName, newTaskName) {
-
+    const toDoList = Storage.getToDoList();
+    toDoList.getProject(projectName).getTask(taskName).setName(newTaskName);
+    Storage.saveToDoList(toDoList);
   }
 
   static setTaskDate(projectName, taskName, newDueDate) {
-
+    const toDoList = Storage.getToDoList();
+    toDoList.getProject(projectName).getTask(taskName).setDate(newDueDate);
   }
 }
