@@ -11,8 +11,16 @@ export default class Task {
     this.title = title;
   }
 
+  getTitle() {
+    return this.title;
+  }
+
   setDescription(description) {
     this.description = description;
+  }
+
+  getDescription() {
+    return this.description;
   }
 
   setPriority(priority) {
@@ -21,6 +29,10 @@ export default class Task {
 
   setDate(date) {
     this.date = date;
+  }
+
+  getDate() {
+    return this.date;
   }
 
   getId() {

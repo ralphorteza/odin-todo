@@ -1,7 +1,3 @@
-//
-
-const tasks = [];
-
 // TODO: a function to delete a card.
 const deleteCard = (idNumber) => {
   const card = document.getElementById(idNumber);
