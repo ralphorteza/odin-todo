@@ -1,6 +1,3 @@
-import controller from './controller.js';
+const allProjects = [];
 
-const content = () => {
-  const ctrlr = controller();
-};
-content();
+export default allProjects;
