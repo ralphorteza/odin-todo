@@ -7,6 +7,7 @@ export default class Storage {
     localStorage.setItem('toDoList', JSON.stringify(data));
   }
 
+  // TODO: Find bug that doesn't display new project buttons in sidebar
   static getToDoList() {
     const toDoList = Object.assign(
       new ToDoList(),

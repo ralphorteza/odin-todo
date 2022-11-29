@@ -68,6 +68,26 @@ export default class Dom {
     addProjectPopupInput.addEventListener('keypress', Dom.handleAddProjectInput);
   }
 
+  static openInboxTasks() {
+    Dom.openProject('Inbox', this);
+  }
+
+  static handleProjectButton() {
+    const projectName = this.textContent;
+    Dom.openProject(projectName, this);
+  }
+
+  // TODO
+  static initProjectButtons() {
+    const inboxProjectButton = document.querySelector('#button-inbox-projects');
+    const projectButtons = document.querySelectorAll('.button-project');
+
+    inboxProjectButton.addEventListener('click', Dom.openInboxTasks);
+    projectButtons.forEach((projectButton) => {
+      projectButton.addEventListener('click', Dom.handleProjectButton);
+    });
+  }
+
   static openAddProjectPopup() {
     const addProjectPopup = document.querySelector('#add-project-popup');
     const addProjectButton = document.querySelector('#button-add-project');
@@ -114,7 +134,15 @@ export default class Dom {
   }
 
   // temporary break
-  static createProject() {}
+  static createProject(name) {
+    const userProjects = document.querySelector('#projects-list');
+    const buttonProject = document.createElement('button');
+    buttonProject.setAttribute('class', 'button-project');
+    buttonProject.textContent = name;
+
+    userProjects.append(buttonProject);
+    Dom.initProjectButtons();
+  }
 
   static makeProject() {}
 
