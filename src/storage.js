@@ -19,7 +19,8 @@ export default class Storage {
         .map((project) => Object.assign(new Project(), project)),
     );
 
-    toDoList.getProjects()
+    toDoList
+      .getProjects()
       .forEach((project) => {
         project.setTasks(
           project.getTasks().map((task) => Object.assign(new Task(), task)),

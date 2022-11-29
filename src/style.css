@@ -16,7 +16,7 @@ body {
 
 }
 
-:is(#header, #sidebar, #main, #footer, #form-container, .card) {
+:is(#header, #sidebar, #main, #footer, #form-container, .task) {
   border: 2px solid black;
 }
 
@@ -38,7 +38,7 @@ body {
   grid-row: 8 / -1;
 }
 
-.card {
+.task {
   height: 2rem;
   width: clamp(70%, 120px, 140px);
   margin: 5px;
@@ -63,18 +63,18 @@ body {
   width: 80px;
 }
 
-.card {
+.task {
   display: flex;
   justify-content: space-between;
   align-items: center;
   column-gap: 3px;
 }
 
-.card > input[type='checkbox'] {
+.task > input[type='checkbox'] {
   width: 40px;
 }
 
-.card > .edit, .delete {
+.task > .edit, .delete {
   font-size: 100%;
   padding: 0;
   margin: 0;
@@ -183,7 +183,7 @@ input:required + span::after{
 }
 
 /* frosted glass effect */
-/* .card {
+/* .task {
   border-radius: 8px;
   backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.5);
