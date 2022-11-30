@@ -10,22 +10,6 @@ export default class Dom {
     Dom.loadProjects();
   }
 
-  static openProject(projectName, projectButton) {
-    const defaultProjectButtons = document.querySelectorAll(
-      '.button-default-project',
-    );
-    const projectButtons = document.querySelectorAll('.button-project');
-    const buttons = [...defaultProjectButtons, ...projectButtons];
-
-    const projectPreview = document.querySelector('#project-preview');
-    projectPreview.innerHTML = '';
-
-    buttons.forEach((button) => button.classList.remove('active'));
-    projectButton.classList.add('active');
-    Dom.closeAddProjectPopup();
-    Dom.loadProjectContent(projectName);
-  }
-
   static loadTasks(projectName) {
     Storage.getToDoList()
       .getProject(projectName)
@@ -78,6 +62,7 @@ export default class Dom {
   static handleProjectButton() {
     const projectName = this.textContent;
     Dom.openProject(projectName, this);
+    // console.log(`opened project ${projectName}`);
   }
 
   static initProjectButtons() {
@@ -109,6 +94,22 @@ export default class Dom {
 
   static handleAddProjectInput(e) {
     if (e.key === 'Enter') Dom.addProject();
+  }
+
+  static openProject(projectName, projectButton) {
+    const defaultProjectButtons = document.querySelectorAll(
+      '.button-default-project',
+    );
+    const projectButtons = document.querySelectorAll('.button-project');
+    const buttons = [...defaultProjectButtons, ...projectButtons];
+
+    const projectPreview = document.querySelector('#project-preview');
+    projectPreview.innerHTML = '';
+
+    buttons.forEach((button) => button.classList.remove('active'));
+    projectButton.classList.add('active');
+    Dom.closeAddProjectPopup();
+    Dom.loadProjectContent(projectName);
   }
 
   static addProject() {
@@ -143,7 +144,21 @@ export default class Dom {
     Dom.initProjectButtons();
   }
 
-  static makeProject() {}
+  static deleteTask() {
+    // const deleteBtns = document.querySelectorAll('.delete');
+
+    // deleteBtns.forEach((deleteBtn) => {
+    //   deleteBtn.addEventListener('click',
+    // });
+
+    // projectButtons.forEach((projectButton) => {
+    //   projectButton.addEventListener('click', Dom.handleProjectButton);
+    // });
+  }
+
+  // static handleDeleteBtn () {
+
+  // }
 
   static createTask(name, dueDate) {
     const tasksList = document.querySelector('#tasks-list');
@@ -177,6 +192,7 @@ export default class Dom {
     tasksList.append(taskContainer);
   }
 
+  // FORM ITEMS
   static openForm() {
     const openFormBtn = document.querySelector('#add-task');
     openFormBtn.addEventListener('click', () => {
