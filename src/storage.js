@@ -22,11 +22,9 @@ export default class Storage {
 
     toDoList
       .getProjects()
-      .forEach((project) => {
-        project.setTasks(
-          project.getTasks().map((task) => Object.assign(new Task(), task)),
-        );
-      });
+      .forEach((project) => project.setTasks(
+        project.getTasks().map((task) => Object.assign(new Task(), task)),
+      ));
 
     return toDoList;
   }
