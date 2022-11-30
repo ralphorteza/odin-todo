@@ -7,7 +7,6 @@ export default class Dom {
     Dom.form();
     Dom.initAddProjectButtons();
     Dom.openProject('Inbox', document.getElementById('button-inbox-projects'));
-    // document.addEventListener('keydown', Dom.handleKeyboardInput);
     Dom.loadProjects();
   }
 
@@ -17,6 +16,9 @@ export default class Dom {
     );
     const projectButtons = document.querySelectorAll('.button-project');
     const buttons = [...defaultProjectButtons, ...projectButtons];
+
+    const projectPreview = document.querySelector('#project-preview');
+    projectPreview.innerHTML = '';
 
     buttons.forEach((button) => button.classList.remove('active'));
     projectButton.classList.add('active');
@@ -78,7 +80,6 @@ export default class Dom {
     Dom.openProject(projectName, this);
   }
 
-  // TODO
   static initProjectButtons() {
     const inboxProjectButton = document.querySelector('#button-inbox-projects');
     const projectButtons = document.querySelectorAll('.button-project');
@@ -92,8 +93,6 @@ export default class Dom {
   static openAddProjectPopup() {
     const addProjectPopup = document.querySelector('#add-project-popup');
     const addProjectButton = document.querySelector('#button-add-project');
-
-    // Dom.closeAllPopups();
     addProjectPopup.classList.add('active');
     addProjectButton.classList.add('active');
   }
@@ -134,7 +133,6 @@ export default class Dom {
     Dom.closeAddProjectPopup();
   }
 
-  // temporary break
   static createProject(name) {
     const userProjects = document.querySelector('#projects-list');
     const buttonProject = document.createElement('button');
@@ -195,14 +193,7 @@ export default class Dom {
     });
   }
 
-  static form() {
-    Dom.openForm();
-    Dom.submitTask();
-    Dom.cancelForm();
-  }
-
   static submitTask() {
-    // const submitTaskBtn = document.querySelector('#create-task');
     const form = document.querySelector('#form');
 
     form.addEventListener('submit', (event) => {
@@ -210,8 +201,21 @@ export default class Dom {
       const projectName = document.querySelector('#project-name').textContent;
       const taskName = document.querySelector('#task-title').value;
       const date = document.querySelector('#task-date').value;
+
+      if (taskName === '') return;
+      if (Storage.getToDoList().getProject(projectName).contains(taskName)) return;
+
       Storage.addTask(projectName, new Task(taskName, date));
       Dom.createTask(taskName, date);
+
+      document.querySelector('#form-container').classList.remove('active');
+      document.querySelector('#overlay').classList.remove('active');
     });
+  }
+
+  static form() {
+    Dom.openForm();
+    Dom.submitTask();
+    Dom.cancelForm();
   }
 }
