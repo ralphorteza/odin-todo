@@ -4,10 +4,12 @@ import Task from './task';
 
 export default class Dom {
   static loadPage() {
+    Dom.loadProjects();
     Dom.form();
     Dom.initAddProjectButtons();
     Dom.openProject('Inbox', document.getElementById('button-inbox-projects'));
-    Dom.loadProjects();
+    // Dom.openProject('hello project 3', document.querySelector('.button-project'));
+    // Dom.deleteTask();
   }
 
   static loadTasks(projectName) {
@@ -144,22 +146,6 @@ export default class Dom {
     Dom.initProjectButtons();
   }
 
-  static deleteTask() {
-    // const deleteBtns = document.querySelectorAll('.delete');
-
-    // deleteBtns.forEach((deleteBtn) => {
-    //   deleteBtn.addEventListener('click',
-    // });
-
-    // projectButtons.forEach((projectButton) => {
-    //   projectButton.addEventListener('click', Dom.handleProjectButton);
-    // });
-  }
-
-  // static handleDeleteBtn () {
-
-  // }
-
   static createTask(name, dueDate) {
     const tasksList = document.querySelector('#tasks-list');
     const taskContainer = document.createElement('div');
@@ -188,6 +174,13 @@ export default class Dom {
     taskContainer.append(dateContainer);
     taskContainer.append(editBtn);
     taskContainer.append(deleteBtn);
+
+    deleteBtn.addEventListener('click', (e) => {
+      const taskName = e.target.parentElement.children[1].textContent;
+      const projectName = document.querySelector('#project-name').textContent;
+      // console.log(task.children[1].textContent);
+      console.log(`task: ${taskName} in project: ${projectName}`);
+    });
 
     tasksList.append(taskContainer);
   }
