@@ -179,10 +179,22 @@ export default class Dom {
 
   static initTaskButtons() {
     const deleteBtns = document.querySelectorAll('button.delete');
-    // const editBtn = document.querySelector('button.edit');
+    const editBtns = document.querySelectorAll('button.edit');
+
+    editBtns.forEach((editBtn) => {
+      editBtn.addEventListener('click', Dom.taskDeleteBtnHandler);
+    });
+
     deleteBtns.forEach((deleteBtn) => {
       deleteBtn.addEventListener('click', Dom.taskDeleteBtnHandler);
     });
+  }
+
+  // TODO: edit task function
+  static taskEditBtnHandler(e) {
+    const taskContainer = e.target.parentElement;
+    const taskName = taskContainer.children[1].textContent;
+    const projectName = document.querySelector('#project-name').textContent;
   }
 
   static taskDeleteBtnHandler(e) {
@@ -190,9 +202,9 @@ export default class Dom {
     const taskName = taskContainer.children[1].textContent;
     const projectName = document.querySelector('#project-name').textContent;
 
-    console.log(`Deleting task: ${taskName} in project: ${projectName}`);
     Storage.deleteTask(projectName, taskName);
     taskContainer.remove();
+    // console.log(`Deleting task: ${taskName} in project: ${projectName}`);
   }
 
   // FORM ITEMS
