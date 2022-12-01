@@ -173,16 +173,26 @@ export default class Dom {
     taskContainer.append(editBtn);
     taskContainer.append(deleteBtn);
 
-    deleteBtn.addEventListener('click', (e) => {
-      const task = e.target.parentElement;
-      const taskName = e.target.parentElement.children[1].textContent;
-      const projectName = document.querySelector('#project-name').textContent;
-      task.remove();
-      console.log(`Deleting task: ${taskName} in project: ${projectName}`);
-      Storage.deleteTask(projectName, taskName);
-    });
-
     tasksList.append(taskContainer);
+    Dom.initTaskButtons();
+  }
+
+  static initTaskButtons() {
+    const deleteBtns = document.querySelectorAll('button.delete');
+    // const editBtn = document.querySelector('button.edit');
+    deleteBtns.forEach((deleteBtn) => {
+      deleteBtn.addEventListener('click', Dom.taskDeleteBtnHandler);
+    });
+  }
+
+  static taskDeleteBtnHandler(e) {
+    const taskContainer = e.target.parentElement;
+    const taskName = taskContainer.children[1].textContent;
+    const projectName = document.querySelector('#project-name').textContent;
+
+    console.log(`Deleting task: ${taskName} in project: ${projectName}`);
+    Storage.deleteTask(projectName, taskName);
+    taskContainer.remove();
   }
 
   // FORM ITEMS
