@@ -34,6 +34,6 @@ export default class Project {
   }
 
   deleteTask(taskName) {
-    this.tasks = this.tasks.fileter((task) => task.name !== taskName);
+    this.tasks = this.tasks.filter((task) => task.name !== taskName);
   }
 }
