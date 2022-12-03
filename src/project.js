@@ -1,6 +1,9 @@
+import Task from './task';
+
 export default class Project {
-  constructor(name) {
+  constructor(name, id) {
     this.name = name;
+    this.id = id;
     this.tasks = [];
   }
 
@@ -20,20 +23,21 @@ export default class Project {
     return this.tasks;
   }
 
-  getTask(taskName) {
-    return this.task.find((task) => task.getName() === taskName);
+  getTask(taskID) {
+    return this.tasks.find((task) => task.getID() === taskID);
   }
 
-  contains(taskName) {
-    return this.tasks.some((task) => task.getName() === taskName);
+  contains(taskID) {
+    return this.tasks.some((task) => task.getID() === taskID);
   }
 
-  addTask(newTask) {
-    if (this.tasks.find((task) => task.getName() === newTask.name)) return;
-    this.tasks.push(newTask);
+  addTask(taskName, taskID, taskDueDate) {
+    const task = new Task(taskName, taskID, taskDueDate);
+    this.tasks.push(task);
   }
 
-  deleteTask(taskName) {
-    this.tasks = this.tasks.filter((task) => task.name !== taskName);
+  deleteTask(taskID) {
+    const index = this.tasks.findIndex((task) => task.getID() === taskID);
+    this.tasks.splice(index, 1);
   }
 }

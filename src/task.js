@@ -17,7 +17,7 @@ export default class Task {
     return this.name;
   }
 
-  getId() {
+  getID() {
     return this.id;
   }
 
