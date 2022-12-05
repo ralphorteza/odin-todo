@@ -1,15 +1,15 @@
-import Storage from './storage';
-import Project from './project';
+// import Storage from './storage';
+// import Project from './project';
+// import ToDoList from './todolist';
 import Task from './task';
-import ToDoList from './todolist';
 import Render from './render';
 import Handler from './handler';
 
 export default class Dom {
   static loadPage() {
     Dom.taskCardTesting();
-    Handler.forAddTaskButton();
-    Handler.forTaskFormButtons();
+    Handler.formEvents();
+    Handler.forTaskButtons();
   }
 
   static taskCardTesting() {
@@ -20,7 +20,6 @@ export default class Dom {
     Render.aTaskCard(task2.getName(), task2.getDate());
 
     const task3 = new Task('example 3', 5324, '10/15/2022');
-    console.log(task3.getDate);
     Render.aTaskCard(task3.getName(), task3.getDate());
   }
 }

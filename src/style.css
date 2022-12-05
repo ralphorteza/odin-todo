@@ -90,6 +90,17 @@ body {
   width: 70px;
 }
 
+/* Sidebar Container */
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#sidebar > * {
+  height: 300px;
+}
+
 
 /* Form Container */
 #form-container {
