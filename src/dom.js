@@ -10,6 +10,7 @@ export default class Dom {
     Dom.taskCardTesting();
     Handler.formEvents();
     Handler.forTaskButtons();
+    Handler.projectEvents();
   }
 
   static taskCardTesting() {

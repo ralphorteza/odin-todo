@@ -2,6 +2,8 @@ import Task from './task';
 import Render from './render';
 
 export default class Handler {
+  // TASK EVENT HANDLERS CODE BLOCKS BELOW. //
+
   // TODO: Figure out eventlistner functions for task buttons.
   static forTaskButtons() {
     const taskEditButtons = document.querySelectorAll('.button-edit-task');
@@ -28,6 +30,31 @@ export default class Handler {
     const task = event.target.parentElement.parentElement;
     console.log(task);
     task.remove();
+  }
+
+  // PROJECT EVENT HANDLERS CODE BLOCK BELOW. //
+  static projectEvents() {
+    Handler.addProjectButtons();
+  }
+
+  static addProjectButtons() {
+    const buttonAddProject = document.querySelector('#button-add-project');
+    const buttonCancelProject = document.querySelector('#button-cancel-project');
+
+    buttonAddProject.addEventListener('click', Handler.addProject);
+    buttonCancelProject.addEventListener('click', Handler.cancelProject);
+  }
+
+  static addProject() {
+    const projectName = document.querySelector('#input-add-project').value;
+    Render.aProjectCard(projectName);
+    console.log(projectName);
+  }
+
+  static cancelProject() {
+    const inputAddProject = document.querySelector('#input-add-project');
+    inputAddProject.value = '';
+    console.log('project cancelled');
   }
 
   // FORM EVENT HANDLERS CODE BLOCKS BELOW. //

@@ -101,6 +101,11 @@ body {
   height: 300px;
 }
 
+#custom-projects-list {
+  display: flex;
+  flex-direction: column;
+}
+
 
 /* Form Container */
 #form-container {
