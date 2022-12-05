@@ -81,7 +81,7 @@ body {
   width: 40px;
 }
 
-.right-panel > .edit, .delete {
+.right-panel > .button-edit-task, .button-delete-task {
   font-size: 100%;
   padding: 0;
   margin: 0;
@@ -174,14 +174,14 @@ input:required + span::after{
   height: 100px;
 }
 
-.btn-container {
+.form-buttons-container {
   display: flex;
   flex-direction: row;
 
   justify-content: space-evenly;
 }
 
-.btn-container > * {
+.form-buttons-container > * {
   font-size: 100%;
   padding: 0;
   margin: 0;
