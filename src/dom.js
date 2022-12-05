@@ -3,10 +3,12 @@ import Project from './project';
 import Task from './task';
 import ToDoList from './todolist';
 import Render from './render';
+import Handler from './handler';
 
 export default class Dom {
   static loadPage() {
     Dom.taskCardTesting();
+    Handler.forAddTaskButton();
   }
 
   static taskCardTesting() {
