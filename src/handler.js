@@ -1,3 +1,6 @@
+import Task from './task';
+import Render from './render';
+
 export default class Handler {
   // TODO: Figure out eventlistner functions for task buttons.
   static forTaskButtons() {
@@ -13,6 +16,11 @@ export default class Handler {
     });
   }
 
+  static formHandlers() {
+    Handler.forAddTaskButton();
+    Handler.forTaskFormButtons();
+  }
+
   static forAddTaskButton() {
     const addTaskButton = document.querySelector('#add-task');
     addTaskButton.addEventListener('click', Handler.openTaskForm);
@@ -26,6 +34,15 @@ export default class Handler {
     formContainer.classList.add('active');
   }
 
+  static forTaskFormButtons() {
+    // const createTaskButton = document.querySelector('#create-task');
+    const cancelTaskButton = document.querySelector('#cancel-task');
+    const form = document.querySelector('#form');
+
+    cancelTaskButton.addEventListener('click', Handler.cancelTaskForm);
+    form.addEventListener('submit', Handler.createTask);
+  }
+
   static cancelTaskForm() {
     const overlay = document.querySelector('#overlay');
     const formContainer = document.querySelector('#form-container');
@@ -34,7 +51,16 @@ export default class Handler {
     formContainer.classList.remove('active');
   }
 
-  static forTaskForm() {
+  static createTask(event) {
+    event.preventDefault();
+    // const projectName = document.querySelector('#project-name').textContent;
+    const taskName = document.querySelector('#task-title').value;
+    const date = document.querySelector('#task-date').value;
 
+    const newTask = new Task(taskName, date);
+    Render.aTaskCard(newTask.getName(), newTask.getDate());
+
+    document.querySelector('#form-container').classList.remove('active');
+    document.querySelector('#overlay').classList.remove('active');
   }
 }
