@@ -39,7 +39,7 @@ body {
 }
 
 .task {
-  height: 2rem;
+  height: 3rem;
   width: clamp(500px, 80%, 600px);
   margin: 5px;
 }
