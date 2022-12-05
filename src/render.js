@@ -10,16 +10,24 @@ export default class Render {
   }
 
   static aTaskCard(name, dueDate) {
-    const tasksList = document.querySelector('#tasks-list');
+    // projectPreview used for testing purposes.
+    const projectPreview = document.querySelector('#project-preview');
+    // const tasksList = document.querySelector('#tasks-list');
+
     const taskContainer = document.createElement('div');
+    const leftPanel = document.createElement('div');
+    const rightPanel = document.createElement('div');
+
     const checkBox = document.createElement('input');
-    const nameContainer = document.createElement('div');
-    const dateContainer = document.createElement('div');
+    const nameContainer = document.createElement('p');
+    const dateContainer = document.createElement('p');
 
     const editBtn = document.createElement('button');
     const deleteBtn = document.createElement('button');
 
     taskContainer.classList.add('task');
+    leftPanel.classList.add('left-panel');
+    rightPanel.classList.add('right-panel');
     nameContainer.classList.add('task-name');
     dateContainer.classList.add('date');
     editBtn.classList.add('edit');
@@ -32,13 +40,17 @@ export default class Render {
     editBtn.textContent = 'edit';
     deleteBtn.textContent = 'delete';
 
-    taskContainer.append(checkBox);
-    taskContainer.append(nameContainer);
-    taskContainer.append(dateContainer);
-    taskContainer.append(editBtn);
-    taskContainer.append(deleteBtn);
+    leftPanel.append(checkBox);
+    leftPanel.append(nameContainer);
+    rightPanel.append(dateContainer);
+    rightPanel.append(editBtn);
+    rightPanel.append(deleteBtn);
 
-    tasksList.append(taskContainer);
+    taskContainer.append(leftPanel);
+    taskContainer.append(rightPanel);
+
+    projectPreview.append(taskContainer);
+    // tasksList.append(taskContainer);
     // Dom.initTaskButtons();
   }
 }
