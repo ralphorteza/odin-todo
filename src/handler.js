@@ -27,6 +27,7 @@ export default class Handler {
   static deleteTask(event) {
     const task = event.target.parentElement.parentElement;
     console.log(task);
+    task.remove();
   }
 
   // FORM EVENT HANDLERS CODE BLOCKS BELOW. //

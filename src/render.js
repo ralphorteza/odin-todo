@@ -1,6 +1,6 @@
 export default class Render {
   static aProjectCard(name) {
-    const userProjects = document.querySelector('#projects-list');
+    const userProjects = document.querySelector('#custom-projects-list');
     const buttonProject = document.createElement('button');
     buttonProject.setAttribute('class', 'button-project');
     buttonProject.textContent = name;
