@@ -29,9 +29,7 @@ export default class ToDoList {
   }
 
   deleteProject(projectName) {
-    const projectToDelete = this.projects.find(
-      (project) => project.getName() === projectName,
-    );
-    this.projects.splice(this.projects.indexOf(projectToDelete), 1);
+    const index = this.projects.indexOf((project) => project.getName() === projectName);
+    this.projects.splice(index, 1);
   }
 }

@@ -3,6 +3,11 @@ import Task from './task';
 import ToDoList from './todolist';
 
 export default class Storage {
+  static toDoList() {
+    const todolist = new ToDoList();
+    return todolist;
+  }
+
   static saveToDoList(data) {
     localStorage.setItem('toDoList', JSON.stringify(data));
   }
@@ -29,25 +34,25 @@ export default class Storage {
   }
 
   static addProject(project) {
-    const toDoList = Storage.getToDoList();
+    const toDoList = Storage.toDoList();
     toDoList.addProject(project);
     Storage.saveToDoList(toDoList);
   }
 
   static deleteProject(projectName) {
-    const toDoList = Storage.getToDoList();
+    const toDoList = Storage.toDoList();
     toDoList.deleteProject(projectName);
     Storage.saveToDoList(toDoList);
   }
 
   static addTask(projectName, task) {
-    const toDoList = Storage.getToDoList();
+    const toDoList = Storage.toDoList();
     toDoList.getProject(projectName).addTask(task);
     Storage.saveToDoList(toDoList);
   }
 
   static deleteTask(projectName, taskName) {
-    const toDoList = Storage.getToDoList();
+    const toDoList = Storage.toDoList();
     toDoList.getProject(projectName).deleteTask(taskName);
     Storage.saveToDoList(toDoList);
   }

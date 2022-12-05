@@ -32,8 +32,7 @@ export default class Project {
   }
 
   addTask(taskName, taskID, taskDueDate) {
-    const task = new Task(taskName, taskID, taskDueDate);
-    this.tasks.push(task);
+    this.tasks.push(new Task(taskName, taskID, taskDueDate));
   }
 
   deleteTask(taskID) {
