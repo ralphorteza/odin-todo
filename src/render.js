@@ -30,8 +30,8 @@ export default class Render {
     rightPanel.classList.add('right-panel');
     nameContainer.classList.add('task-name');
     dateContainer.classList.add('date');
-    editBtn.classList.add('edit');
-    deleteBtn.classList.add('delete');
+    editBtn.classList.add('button-edit-task');
+    deleteBtn.classList.add('button-delete-task');
 
     checkBox.setAttribute('type', 'checkbox');
 
