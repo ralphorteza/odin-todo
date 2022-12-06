@@ -13,13 +13,12 @@ export default class Storage {
   }
 
   static getToDoList() {
-    let todolist;
+    let todolist = new ToDoList();
     if (localStorage.getItem('todolist') === null) {
-      todolist = new ToDoList();
       localStorage.setItem('todolist', JSON.stringify(todolist));
-    } else {
-      todolist = JSON.parse(localStorage.getItem('todolist'));
     }
+    todolist = JSON.parse(localStorage.getItem('todolist'));
+
     return todolist;
   }
 
