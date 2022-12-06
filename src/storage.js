@@ -3,68 +3,79 @@ import Task from './task';
 import ToDoList from './todolist';
 
 export default class Storage {
-  static toDoList() {
-    const todolist = new ToDoList();
-    return todolist;
-  }
+  // static todolist() {
+  //   const todolist = new ToDoList();
+  //   return todolist;
+  // }
 
   static saveToDoList(data) {
-    localStorage.setItem('toDoList', JSON.stringify(data));
+    localStorage.setItem('todoList', JSON.stringify(data));
   }
 
   static getToDoList() {
-    const toDoList = Object.assign(
-      new ToDoList(),
-      JSON.parse(localStorage.getItem('toDoList')),
-    );
-
-    toDoList.setProjects(
-      toDoList
-        .getProjects()
-        .map((project) => Object.assign(new Project(), project)),
-    );
-
-    toDoList
-      .getProjects()
-      .forEach((project) => project.setTasks(
-        project.getTasks().map((task) => Object.assign(new Task(), task)),
-      ));
-
-    return toDoList;
+    let todolist;
+    if (localStorage.getItem('todolist') === null) {
+      todolist = new ToDoList();
+      localStorage.setItem('todolist', JSON.stringify(todolist));
+    } else {
+      todolist = JSON.parse(localStorage.getItem('todolist'));
+    }
+    return todolist;
   }
 
+  // static getToDoList() {
+  //   const todolist = Object.assign(
+  //     new ToDoList(),
+  //     JSON.parse(localStorage.getItem('todolist')),
+  //   );
+
+  //   todolist.setProjects(
+  //     todolist
+  //       .getProjects()
+  //       .map((project) => Object.assign(new Project(), project)),
+  //   );
+
+  //   todolist
+  //     .getProjects()
+  //     .forEach((project) => project.setTasks(
+  //       project.getTasks().map((task) => Object.assign(new Task(), task)),
+  //     ));
+
+  //   return todolist;
+  // }
+
   static addProject(project) {
-    const toDoList = Storage.toDoList();
-    toDoList.addProject(project);
-    Storage.saveToDoList(toDoList);
+    const todolist = Storage.getToDoList();
+    todolist.addProject(project);
+    Storage.saveToDoList(todolist);
   }
 
   static deleteProject(projectName) {
-    const toDoList = Storage.toDoList();
-    toDoList.deleteProject(projectName);
-    Storage.saveToDoList(toDoList);
+    const todolist = Storage.todolist();
+    todolist.deleteProject(projectName);
+    Storage.saveToDoList(todolist);
   }
 
   static addTask(projectName, task) {
-    const toDoList = Storage.toDoList();
-    toDoList.getProject(projectName).addTask(task);
-    Storage.saveToDoList(toDoList);
+    const todolist = Storage.todolist();
+    todolist.getProject(projectName).addTask(task);
+    Storage.saveToDoList(todolist);
   }
 
   static deleteTask(projectName, taskName) {
-    const toDoList = Storage.toDoList();
-    toDoList.getProject(projectName).deleteTask(taskName);
-    Storage.saveToDoList(toDoList);
+    const todolist = Storage.todolist();
+    todolist.getProject(projectName).deleteTask(taskName);
+    Storage.saveToDoList(todolist);
   }
 
   static renameTask(projectName, taskName, newTaskName) {
-    const toDoList = Storage.getToDoList();
-    toDoList.getProject(projectName).getTask(taskName).setName(newTaskName);
-    Storage.saveToDoList(toDoList);
+    const todolist = Storage.getToDoList();
+    todolist.getProject(projectName).getTask(taskName).setName(newTaskName);
+    Storage.saveToDoList(todolist);
   }
 
   static setTaskDate(projectName, taskName, newDueDate) {
-    const toDoList = Storage.getToDoList();
-    toDoList.getProject(projectName).getTask(taskName).setDate(newDueDate);
+    const todolist = Storage.getToDoList();
+    todolist.getProject(projectName).getTask(taskName).setDate(newDueDate);
   }
 }

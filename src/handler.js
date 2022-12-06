@@ -47,14 +47,17 @@ export default class Handler {
 
   static addProject() {
     const projectName = document.querySelector('#input-add-project').value;
+
+    if (projectName === '') return;
+
     Render.aProjectCard(projectName);
-    console.log(projectName);
+    // console.log(projectName);
   }
 
   static cancelProject() {
     const inputAddProject = document.querySelector('#input-add-project');
     inputAddProject.value = '';
-    console.log('project cancelled');
+    // console.log('project cancelled');
   }
 
   // FORM EVENT HANDLERS CODE BLOCKS BELOW. //
