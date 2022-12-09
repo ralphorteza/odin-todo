@@ -1,13 +1,13 @@
-import ProjectsList from './projectslist';
 import Project from './project';
 import Task from './task';
 import Render from './render';
 import Handler from './handler';
+import Storage from './storage';
 
 export default class Dom {
   static loadPage() {
     // Dom.initializeProjectsList();
-    console.log(this.projectsList);
+    // console.log(this.projectsList);
     Dom.projectsListTesting();
     Handler.formEvents();
     Handler.forTaskButtons();
@@ -17,47 +17,39 @@ export default class Dom {
   static projectsListTesting() {
     // const projectsList = ProjectsList.getProjectsList();
 
-    const projects = this.projectTesting();
+    const projects = Dom.exampleProjects();
+    const tasks = Dom.exampleTasks();
 
-    console.log('before adding project');
-    console.log(ProjectsList.projects);
-
-    console.log('After adding testProject1');
-    this.projectsList.addProject(projects.testProject1);
-    // console.log(projectsList);
+    // Storage.deleteProject(projects.testProject2);
+    // Storage.addProject(projects.testProject2);
+    // Storage.addTask(projects.testProject2.name, tasks.task3);
+    Storage.deleteTask(projects.testProject2.name, tasks.task2.name);
   }
 
-  static taskCardTesting() {
-    const task1 = new Task('example 1', 123, '12/15/2022');
+  static exampleTasks() {
+    const task1 = new Task('example 1', '12/15/2022');
     Render.aTaskCard(task1.getName(), task1.getDate());
 
-    const task2 = new Task('example 2', 3435, '11/15/2022');
+    const task2 = new Task('example 2', '11/15/2022');
     Render.aTaskCard(task2.getName(), task2.getDate());
 
-    const task3 = new Task('example 3', 5324, '10/15/2022');
+    const task3 = new Task('example 3', '10/15/2022');
     Render.aTaskCard(task3.getName(), task3.getDate());
 
-    const task4 = new Task('example 4', 3324, '9/15/2022');
+    const task4 = new Task('example 4', '9/15/2022');
     Render.aTaskCard(task4.getName(), task4.getDate());
 
-    const task5 = new Task('example 5', 3411, '8/15,2022');
+    const task5 = new Task('example 5', '8/15,2022');
     Render.aTaskCard(task5.getName(), task5.getDate());
 
     return {
-      task1, task2, task3, task4,
+      task1, task2, task3, task4, task5,
     };
   }
 
-  static projectTesting() {
-    const testProject1 = new Project('testProject1', 'ARFVB');
-    const testProject2 = new Project('testProject2', 'DFDFD');
-    const tasks = this.taskCardTesting();
-
-    testProject1.addTask(tasks.task1.getName(), tasks.task1.getID(), tasks.task1.getDate());
-    testProject1.addTask(tasks.task2.getName(), tasks.task2.getID(), tasks.task2.getDate());
-    testProject1.addTask(tasks.task3.getName(), tasks.task3.getID(), tasks.task3.getDate());
-
-    testProject2.addTask(tasks.task4.getName, tasks.task4.getID, tasks.task4.getDate);
+  static exampleProjects() {
+    const testProject1 = new Project('testProject1');
+    const testProject2 = new Project('testProject2');
 
     return { testProject1, testProject2 };
   }

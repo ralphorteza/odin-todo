@@ -17,9 +17,9 @@ export default class Task {
     return this.name;
   }
 
-  getID() {
-    return this.id;
-  }
+  // getID() {
+  //   return this.id;
+  // }
 
   getDate() {
     return this.dueDate;
