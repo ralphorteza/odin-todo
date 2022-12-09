@@ -5,8 +5,6 @@ import Render from './render';
 import Handler from './handler';
 
 export default class Dom {
-  projectsList = new ProjectsList();
-
   static loadPage() {
     // Dom.initializeProjectsList();
     console.log(this.projectsList);

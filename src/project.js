@@ -1,9 +1,9 @@
 import Task from './task';
 
 export default class Project {
-  constructor(name, id) {
+  constructor(name) {
     this.name = name;
-    this.id = id;
+    // this.id = id;
     this.tasks = [];
   }
 
@@ -23,20 +23,20 @@ export default class Project {
     return this.tasks;
   }
 
-  getTask(taskID) {
-    return this.tasks.find((task) => task.getID() === taskID);
+  getTask(taskName) {
+    return this.tasks.find((task) => task.getName() === taskName);
   }
 
-  contains(taskID) {
-    return this.tasks.some((task) => task.getID() === taskID);
+  contains(taskName) {
+    return this.tasks.some((task) => task.getName() === taskName);
   }
 
-  addTask(taskName, taskID, taskDueDate) {
-    this.tasks.push(new Task(taskName, taskID, taskDueDate));
+  addTask(newTask) {
+    if (this.tasks.find((task) => task.getName() === newTask.name)) return;
+    this.tasks.push(newTask);
   }
 
-  deleteTask(taskID) {
-    const index = this.tasks.findIndex((task) => task.getID() === taskID);
-    this.tasks.splice(index, 1);
+  deleteTask(taskName) {
+    this.tasks = this.tasks.filter((task) => task.name !== taskName);
   }
 }
