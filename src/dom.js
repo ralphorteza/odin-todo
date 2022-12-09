@@ -1,19 +1,32 @@
-import Storage from './storage';
-// import ToDoList from './todolist';
+import ProjectsList from './projectslist';
 import Project from './project';
 import Task from './task';
 import Render from './render';
 import Handler from './handler';
 
 export default class Dom {
+  projectsList = new ProjectsList();
+
   static loadPage() {
-    // Dom.taskCardTesting();
-    Storage.getToDoList();
-    Dom.todolistTesting();
-    // Dom.projectTesting();
+    // Dom.initializeProjectsList();
+    console.log(this.projectsList);
+    Dom.projectsListTesting();
     Handler.formEvents();
     Handler.forTaskButtons();
     Handler.projectEvents();
+  }
+
+  static projectsListTesting() {
+    // const projectsList = ProjectsList.getProjectsList();
+
+    const projects = this.projectTesting();
+
+    console.log('before adding project');
+    console.log(ProjectsList.projects);
+
+    console.log('After adding testProject1');
+    this.projectsList.addProject(projects.testProject1);
+    // console.log(projectsList);
   }
 
   static taskCardTesting() {
@@ -30,7 +43,7 @@ export default class Dom {
     Render.aTaskCard(task4.getName(), task4.getDate());
 
     const task5 = new Task('example 5', 3411, '8/15,2022');
-    Render.aTaskCard(task5.getName, task5.getDate);
+    Render.aTaskCard(task5.getName(), task5.getDate());
 
     return {
       task1, task2, task3, task4,
@@ -49,17 +62,5 @@ export default class Dom {
     testProject2.addTask(tasks.task4.getName, tasks.task4.getID, tasks.task4.getDate);
 
     return { testProject1, testProject2 };
-  }
-
-  static todolistTesting() {
-    const todolist = Storage.getToDoList();
-    const projects = this.projectTesting();
-
-    console.log('before adding project');
-    console.log(todolist);
-
-    console.log('After adding testProject1');
-    Storage.addProject(projects.testProject1);
-    console.log(todolist);
   }
 }

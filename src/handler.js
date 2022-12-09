@@ -22,13 +22,13 @@ export default class Handler {
   static editTask(event) {
     const task = event.target.parentElement.parentElement;
     const taskName = task.children[0].children[1].textContent;
-    console.log(taskName);
+    // console.log(taskName);
   }
 
   // TODO: Create delete task function.
   static deleteTask(event) {
     const task = event.target.parentElement.parentElement;
-    console.log(task);
+    // console.log(task);
     task.remove();
   }
 
