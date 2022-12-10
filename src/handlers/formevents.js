@@ -1,5 +1,5 @@
-import Task from './task';
-import Render from './render';
+import Task from '../task';
+import Render from '../render';
 
 export default class FormEvents {
   // FORM EVENT HANDLERS CODE BLOCKS BELOW. //

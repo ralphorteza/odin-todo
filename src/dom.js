@@ -1,8 +1,8 @@
-import Project from './project';
-import Task from './task';
-import Render from './render';
-import Handler from './handler';
-import Storage from './storage';
+import Handler from './handlers/handler';
+// import Project from './project';
+// import Task from './task';
+// import Render from './render';
+// import Storage from './storage';
 
 export default class Dom {
   static loadPage() {

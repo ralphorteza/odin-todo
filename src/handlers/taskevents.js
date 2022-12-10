@@ -16,16 +16,16 @@ export default class TaskEvents {
   }
 
   // TODO: create edit task function. Currently, prints out task name when pressing edit button.
-  static editTask(event) {
-    const task = event.target.parentElement.parentElement;
-    const taskName = task.children[0].children[1].textContent;
-    // console.log(taskName);
-  }
+  // static editTask(event) {
+  //   const task = event.target.parentElement.parentElement;
+  //   const taskName = task.children[0].children[1].textContent;
+  //   console.log(taskName);
+  // }
 
   // TODO: Create delete task function.
-  static deleteTask(event) {
-    const task = event.target.parentElement.parentElement;
-    // console.log(task);
-    task.remove();
-  }
+  // static deleteTask(event) {
+  //   const task = event.target.parentElement.parentElement;
+  //   // console.log(task);
+  //   task.remove();
+  // }
 }

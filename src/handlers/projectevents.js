@@ -1,9 +1,8 @@
-import Project from './project';
-import Render from './render';
-import Storage from './storage';
+import Project from '../project';
+import Render from '../render';
+import Storage from '../storage';
 
 export default class ProjectEvents {
-  // PROJECT EVENT HANDLERS CODE BLOCK BELOW. //
   static projectEvents() {
     ProjectEvents.addProjectButtons();
   }
@@ -20,11 +19,11 @@ export default class ProjectEvents {
     const projectName = document.querySelector('#input-add-project').value;
 
     if (projectName === '') {
-      console.log('Project name cannot be empty!');
+      // console.log('Project name cannot be empty!');
       return;
     }
     if (Storage.getProjectsList().contains(projectName)) {
-      console.log(`${projectName} already exist!`);
+      // console.log(`${projectName} already exist!`);
       return;
     }
 
@@ -41,9 +40,9 @@ export default class ProjectEvents {
   }
 
   // TODO: when pressed, opens project in main container
-  static selectedProjectInSidebar(e) {
+  // static selectedProjectInSidebar(e) {
 
-  }
+  // }
 
   static initProjectButtons() {
     // const inboxProjectsButton = document.querySelector('#button-inbox-projects');
