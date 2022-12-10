@@ -9,7 +9,7 @@ export default class Dom {
     // Dom.initializeProjectsList();
     // console.log(this.projectsList);
     Handler.form();
-    Handler.forTaskButtons();
+    Handler.task();
     Handler.project();
   }
 }
