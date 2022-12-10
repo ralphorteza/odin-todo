@@ -2,6 +2,7 @@ import Task from './task';
 import Render from './render';
 import Storage from './storage';
 import Project from './project';
+import FormEvents from './formevents';
 
 export default class Handler {
   // TASK EVENT HANDLERS CODE BLOCKS BELOW. //
@@ -86,53 +87,56 @@ export default class Handler {
     });
   }
 
-  // FORM EVENT HANDLERS CODE BLOCKS BELOW. //
-
-  static formEvents() {
-    Handler.forAddTaskButton();
-    Handler.forTaskFormButtons();
+  static form() {
+    FormEvents.formEvents();
   }
+  // // FORM EVENT HANDLERS CODE BLOCKS BELOW. //
 
-  static forAddTaskButton() {
-    const addTaskButton = document.querySelector('#add-task');
-    addTaskButton.addEventListener('click', Handler.openTaskForm);
-  }
+  // static formEvents() {
+  //   Handler.forAddTaskButton();
+  //   Handler.forTaskFormButtons();
+  // }
 
-  static openTaskForm() {
-    const overlay = document.querySelector('#overlay');
-    const formContainer = document.querySelector('#form-container');
+  // static forAddTaskButton() {
+  //   const addTaskButton = document.querySelector('#add-task');
+  //   addTaskButton.addEventListener('click', Handler.openTaskForm);
+  // }
 
-    overlay.classList.add('active');
-    formContainer.classList.add('active');
-  }
+  // static openTaskForm() {
+  //   const overlay = document.querySelector('#overlay');
+  //   const formContainer = document.querySelector('#form-container');
 
-  static forTaskFormButtons() {
-    // const createTaskButton = document.querySelector('#create-task');
-    const cancelTaskButton = document.querySelector('#cancel-task');
-    const form = document.querySelector('#form');
+  //   overlay.classList.add('active');
+  //   formContainer.classList.add('active');
+  // }
 
-    cancelTaskButton.addEventListener('click', Handler.cancelTaskForm);
-    form.addEventListener('submit', Handler.createTask);
-  }
+  // static forTaskFormButtons() {
+  //   // const createTaskButton = document.querySelector('#create-task');
+  //   const cancelTaskButton = document.querySelector('#cancel-task');
+  //   const form = document.querySelector('#form');
 
-  static cancelTaskForm() {
-    const overlay = document.querySelector('#overlay');
-    const formContainer = document.querySelector('#form-container');
+  //   cancelTaskButton.addEventListener('click', Handler.cancelTaskForm);
+  //   form.addEventListener('submit', Handler.createTask);
+  // }
 
-    overlay.classList.remove('active');
-    formContainer.classList.remove('active');
-  }
+  // static cancelTaskForm() {
+  //   const overlay = document.querySelector('#overlay');
+  //   const formContainer = document.querySelector('#form-container');
 
-  static createTask(event) {
-    event.preventDefault();
-    // const projectName = document.querySelector('#project-name').textContent;
-    const taskName = document.querySelector('#task-title').value;
-    const date = document.querySelector('#task-date').value;
+  //   overlay.classList.remove('active');
+  //   formContainer.classList.remove('active');
+  // }
 
-    const newTask = new Task(taskName, date);
-    Render.aTaskCard(newTask.getName(), newTask.getDate());
+  // static createTask(event) {
+  //   event.preventDefault();
+  //   // const projectName = document.querySelector('#project-name').textContent;
+  //   const taskName = document.querySelector('#task-title').value;
+  //   const date = document.querySelector('#task-date').value;
 
-    document.querySelector('#form-container').classList.remove('active');
-    document.querySelector('#overlay').classList.remove('active');
-  }
+  //   const newTask = new Task(taskName, date);
+  //   Render.aTaskCard(newTask.getName(), newTask.getDate());
+
+  //   document.querySelector('#form-container').classList.remove('active');
+  //   document.querySelector('#overlay').classList.remove('active');
+  // }
 }

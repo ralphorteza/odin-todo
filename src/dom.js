@@ -8,7 +8,7 @@ export default class Dom {
   static loadPage() {
     // Dom.initializeProjectsList();
     // console.log(this.projectsList);
-    Handler.formEvents();
+    Handler.form();
     Handler.forTaskButtons();
     Handler.projectEvents();
   }
