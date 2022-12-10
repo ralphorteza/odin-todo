@@ -19,34 +19,35 @@ export default class ProjectEvents {
     const projectName = document.querySelector('#input-add-project').value;
 
     if (projectName === '') {
-      // console.log('Project name cannot be empty!');
+      console.log('Project name cannot be empty!');
       return;
     }
     if (Storage.getProjectsList().contains(projectName)) {
-      // console.log(`${projectName} already exist!`);
+      console.log(`${projectName} already exist!`);
       return;
     }
 
     Storage.addProject(new Project(projectName));
     Render.aProjectCard(projectName);
     ProjectEvents.initProjectButtons();
-    // console.log(projectName);
+    console.log(`${projectName} created!`);
   }
 
   static cancelProject() {
     const inputAddProject = document.querySelector('#input-add-project');
     inputAddProject.value = '';
-    // console.log('project cancelled');
+    console.log('project cancelled');
   }
 
   // TODO: when pressed, opens project in main container
-  // static selectedProjectInSidebar(e) {
-
-  // }
+  static selectedProjectInSidebar(event) {
+    const projectName = event.target.textContent;
+    console.log(`project button ${projectName} clicked!`);
+  }
 
   static initProjectButtons() {
     // const inboxProjectsButton = document.querySelector('#button-inbox-projects');
-    // inboxProjectsButton.addEventListener('click', ProjectEvents.openInboxTasks);
+    // inboxProjecatsButton.addEventListener('click', ProjectEvents.openInboxTasks);
 
     const buttonProjects = document.querySelectorAll('.button-project');
     buttonProjects.forEach((buttonProject) => {
