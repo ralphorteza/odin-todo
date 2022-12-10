@@ -28,13 +28,4 @@ export default class Dom {
     ProjectEvents.initProjectButtons();
     console.log(`${projectName} button created!`);
   }
-
-  // static openProject(projectName, projectButton) {
-  //   const defaultProjectButtons = document.querySelectorAll('.button-default-project');
-  //   const customProjectButtons = document.querySelectorAll('.button-project');
-
-  //   const allProjectButtons = [...defaultProjectButtons, ...customProjectButtons];
-  //   allProjectButtons.forEach((button) => button.classList.remove('active'));
-  //   projectButton.classList.add('active');
-  // }
 }
