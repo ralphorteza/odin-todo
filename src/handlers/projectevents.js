@@ -39,12 +39,6 @@ export default class ProjectEvents {
     console.log('project cancelled');
   }
 
-  // TODO: when pressed, opens project in main container
-  static selectedProjectInSidebar(event) {
-    const projectName = event.target.textContent;
-    console.log(`project button ${projectName} clicked!`);
-  }
-
   static initProjectButtons() {
     // const inboxProjectsButton = document.querySelector('#button-inbox-projects');
     // inboxProjecatsButton.addEventListener('click', ProjectEvents.openInboxTasks);
@@ -53,5 +47,22 @@ export default class ProjectEvents {
     buttonProjects.forEach((buttonProject) => {
       buttonProject.addEventListener('click', ProjectEvents.selectedProjectInSidebar);
     });
+  }
+
+  // TODO: when pressed, opens project in main container
+  static selectedProjectInSidebar(event) {
+    const projectName = event.target.textContent;
+    console.log(`project button ${projectName} clicked!`);
+
+    ProjectEvents.openProject(projectName, this);
+  }
+
+  static openProject(projectName, projectButton) {
+    const defaultProjectButtons = document.querySelectorAll('.button-default-project');
+    const customProjectButtons = document.querySelectorAll('.button-project');
+
+    const allProjectButtons = [...defaultProjectButtons, ...customProjectButtons];
+    allProjectButtons.forEach((button) => button.classList.remove('active'));
+    projectButton.classList.add('active');
   }
 }

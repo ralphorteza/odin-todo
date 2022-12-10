@@ -10,6 +10,7 @@ export default class Dom {
     Handler.form();
     Handler.task();
     Handler.project();
+    ProjectEvents.openProject('Inbox', document.querySelector('#button-inbox-projects'));
     Dom.loadProjects();
   }
 
@@ -27,4 +28,13 @@ export default class Dom {
     ProjectEvents.initProjectButtons();
     console.log(`${projectName} button created!`);
   }
+
+  // static openProject(projectName, projectButton) {
+  //   const defaultProjectButtons = document.querySelectorAll('.button-default-project');
+  //   const customProjectButtons = document.querySelectorAll('.button-project');
+
+  //   const allProjectButtons = [...defaultProjectButtons, ...customProjectButtons];
+  //   allProjectButtons.forEach((button) => button.classList.remove('active'));
+  //   projectButton.classList.add('active');
+  // }
 }
