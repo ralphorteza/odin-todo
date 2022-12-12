@@ -69,4 +69,9 @@ export default class ProjectEvents {
 
     projectNameHeader.textContent = projectName;
   }
+
+  static openInboxProject() {
+    const buttonInboxProjects = document.querySelector('#button-inbox-projects');
+    buttonInboxProjects.addEventListener('click', ProjectEvents.selectedProjectInSidebar);
+  }
 }

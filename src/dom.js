@@ -12,6 +12,7 @@ export default class Dom {
     Handler.project();
     Handler.openProject('Inbox', document.querySelector('#button-inbox-projects'));
     Dom.loadProjects();
+    Handler.openInboxProject();
   }
 
   static loadProjects() {
