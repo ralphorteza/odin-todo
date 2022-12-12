@@ -8,6 +8,9 @@ export default class Render {
     const buttonEditProject = document.createElement('button');
     const buttonDeleteProject = document.createElement('button');
 
+    projectCard.classList.add('card-project');
+    leftPanel.classList.add('left-panel');
+    rightPanel.classList.add('right-panel');
     buttonProject.setAttribute('class', 'button-project');
     buttonEditProject.setAttribute('class', 'button-edit-project');
     buttonDeleteProject.setAttribute('class', 'button-delete-project');

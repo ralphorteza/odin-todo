@@ -42,10 +42,16 @@ export default class ProjectEvents {
   static initProjectButtons() {
     // const inboxProjectsButton = document.querySelector('#button-inbox-projects');
     // inboxProjecatsButton.addEventListener('click', ProjectEvents.openInboxTasks);
-
     const buttonProjects = document.querySelectorAll('.button-project');
+    const buttonDeleteProjects = document.querySelectorAll('.button-delete-project');
+    // const buttonEditProjects = document.querySelectorAll('.button-edit-project');
+
     buttonProjects.forEach((buttonProject) => {
       buttonProject.addEventListener('click', ProjectEvents.selectedProjectInSidebar);
+    });
+
+    buttonDeleteProjects.forEach((buttonDeleteProject) => {
+      buttonDeleteProject.addEventListener('click', ProjectEvents.deleteProject);
     });
   }
 
@@ -58,27 +64,27 @@ export default class ProjectEvents {
   }
 
   static openProject(projectName, projectButton) {
-    const projectPreview = document.querySelector('#project-preview');
+    // const projectPreview = document.querySelector('#project-preview');
     const projectNameHeader = document.querySelector('#project-name-header');
     const defaultProjectButtons = document.querySelectorAll('.button-default-project');
     const customProjectButtons = document.querySelectorAll('.button-project');
-    const buttonDeleteProject = document.querySelector('#button-delete-project');
-    buttonDeleteProject.style.display = 'none';
 
-    if (projectName !== 'Inbox') {
-      buttonDeleteProject.style.display = 'block';
-    }
     projectNameHeader.textContent = projectName;
     const allProjectButtons = [...defaultProjectButtons, ...customProjectButtons];
     allProjectButtons.forEach((button) => button.classList.remove('active'));
     projectButton.classList.add('active');
   }
 
-  // static deleteProject() {
-  //   const projectName = document.querySelector('#project-name-header').textContent;
-  //   if (button.classList.contains('active'))
-  //   Storage.deleteProject(projectName);
-  // }
+  // Deletes project from storage and in UI, then loads Inbox content.
+  static deleteProject(event) {
+    const projectCard = event.target.parentElement.parentElement;
+    const projectName = projectCard.children[0].children[0].textContent;
+
+    console.log(`${projectName} deleted!`);
+    Storage.deleteProject(projectName);
+    projectCard.remove();
+    ProjectEvents.openProject('Inbox', document.querySelector('#button-inbox-projects'));
+  }
 
   static openInboxProject() {
     const buttonInboxProjects = document.querySelector('#button-inbox-projects');

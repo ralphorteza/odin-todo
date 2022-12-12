@@ -115,6 +115,20 @@ body {
   flex-direction: column;
 }
 
+/* project card */
+.card-project {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-project > .left-panel {
+  display: flex;
+  flex-grow: 3;
+}
+
+.card-project > .left-panel > button {
+  flex-grow: 3;
+}
 
 /* Form Container */
 #form-container {
