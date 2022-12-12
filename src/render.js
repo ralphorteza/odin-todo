@@ -1,11 +1,29 @@
 export default class Render {
   static aProjectCard(name) {
     const userProjects = document.querySelector('#custom-projects-list');
+    const projectCard = document.createElement('div');
+    const leftPanel = document.createElement('div');
+    const rightPanel = document.createElement('div');
     const buttonProject = document.createElement('button');
-    buttonProject.setAttribute('class', 'button-project');
-    buttonProject.textContent = name;
+    const buttonEditProject = document.createElement('button');
+    const buttonDeleteProject = document.createElement('button');
 
-    userProjects.append(buttonProject);
+    buttonProject.setAttribute('class', 'button-project');
+    buttonEditProject.setAttribute('class', 'button-edit-project');
+    buttonDeleteProject.setAttribute('class', 'button-delete-project');
+
+    buttonProject.textContent = name;
+    buttonEditProject.textContent = 'edit';
+    buttonDeleteProject.textContent = 'del';
+
+    leftPanel.append(buttonProject);
+    rightPanel.append(buttonEditProject);
+    rightPanel.append(buttonDeleteProject);
+
+    projectCard.append(leftPanel);
+    projectCard.append(rightPanel);
+
+    userProjects.append(projectCard);
     // Dom.initProjectButtons();
   }
 

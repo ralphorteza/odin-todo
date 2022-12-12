@@ -74,10 +74,11 @@ export default class ProjectEvents {
     projectButton.classList.add('active');
   }
 
-  static deleteProject() {
-    const projectName = document.querySelector('#project-name-header').textContent;
-    Storage.deleteProject(projectName);
-  }
+  // static deleteProject() {
+  //   const projectName = document.querySelector('#project-name-header').textContent;
+  //   if (button.classList.contains('active'))
+  //   Storage.deleteProject(projectName);
+  // }
 
   static openInboxProject() {
     const buttonInboxProjects = document.querySelector('#button-inbox-projects');
