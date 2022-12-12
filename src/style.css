@@ -54,6 +54,19 @@ body {
   position: relative;
 }
 
+#project-header-container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  row-gap: 10px;
+}
+
+#button-delete-project {
+  height: 1rem;
+  width: 1rem;
+}
+
 /* button */
 #add-task {
   position: absolute;
