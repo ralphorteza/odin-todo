@@ -10,7 +10,7 @@ export default class Dom {
     Handler.form();
     Handler.task();
     Handler.project();
-    ProjectEvents.openProject('Inbox', document.querySelector('#button-inbox-projects'));
+    Handler.openProject('Inbox', document.querySelector('#button-inbox-projects'));
     Dom.loadProjects();
   }
 
@@ -25,7 +25,7 @@ export default class Dom {
 
   static loadProject(projectName) {
     Render.aProjectCard(projectName);
-    ProjectEvents.initProjectButtons();
+    Handler.initProjectButtons();
     console.log(`${projectName} button created!`);
   }
 }

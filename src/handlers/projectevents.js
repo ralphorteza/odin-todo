@@ -58,11 +58,15 @@ export default class ProjectEvents {
   }
 
   static openProject(projectName, projectButton) {
+    // const projectPreview = document.querySelector('#project-preview');
+    const projectNameHeader = document.querySelector('#project-name-header');
     const defaultProjectButtons = document.querySelectorAll('.button-default-project');
     const customProjectButtons = document.querySelectorAll('.button-project');
 
     const allProjectButtons = [...defaultProjectButtons, ...customProjectButtons];
     allProjectButtons.forEach((button) => button.classList.remove('active'));
     projectButton.classList.add('active');
+
+    projectNameHeader.textContent = projectName;
   }
 }

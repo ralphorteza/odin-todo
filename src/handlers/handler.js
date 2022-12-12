@@ -11,6 +11,14 @@ export default class Handler {
     ProjectEvents.projectEvents();
   }
 
+  static initProjectButtons() {
+    ProjectEvents.initProjectButtons();
+  }
+
+  static openProject(projectName, projectButton) {
+    ProjectEvents.openProject(projectName, projectButton);
+  }
+
   static form() {
     FormEvents.formEvents();
   }
