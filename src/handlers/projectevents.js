@@ -51,7 +51,7 @@ export default class ProjectEvents {
     });
 
     buttonEditProjects.forEach((buttonEditProject) => {
-      buttonEditProject.addEventListener('click', ProjectEvents.openProjectForm);
+      buttonEditProject.addEventListener('click', ProjectEvents.openForm);
     });
 
     buttonDeleteProjects.forEach((buttonDeleteProject) => {
@@ -94,4 +94,45 @@ export default class ProjectEvents {
     const buttonInboxProjects = document.querySelector('#button-inbox-projects');
     buttonInboxProjects.addEventListener('click', ProjectEvents.selectedProjectInSidebar);
   }
+
+  static openForm(event) {
+    const overlay = document.querySelector('#overlay');
+    const formContainer = document.querySelector('#form-project-container');
+    overlay.classList.add('active');
+    formContainer.classList.add('active');
+    const buttonCancelProjectEdit = document.querySelector('#button-cancel-project-edit');
+    const projectCard = event.target.parentElement.parentElement;
+    const projectName = projectCard.children[0].children[0].textContent;
+
+    console.log(`Openned edit form for project ${projectName}!`);
+    buttonCancelProjectEdit.addEventListener('click', ProjectEvents.cancelForm);
+  }
+
+  static cancelForm(event) {
+    console.log(event.target);
+    const overlay = document.querySelector('#overlay');
+    const formContainer = document.querySelector('#form-project-container');
+
+    overlay.classList.remove('active');
+    formContainer.classList.remove('active');
+    // console.log(`Cancelled edit form for project ${projectName}!`);
+    console.log('Cancelled edit form for project!');
+  }
+
+  // static cancelForm(projectName) {
+  //   const buttonCancelProjectEdit = document.querySelector('#button-cancel-project-edit');
+  //   // const projectCard = event.target.parentElement.parentElement;
+  //   // const projectName = projectCard.children[0].children[0].textContent;
+  //   // console.log('cancelled edit on project!');
+
+  //   buttonCancelProjectEdit.addEventListener('click', () => {
+  //     // console.log(`cancelled edit on project ${projectName}!`);
+  //     const overlay = document.querySelector('#overlay');
+  //     const formContainer = document.querySelector('#form-project-container');
+
+  //     overlay.classList.remove('active');
+  //     formContainer.classList.remove('active');
+  //     console.log(`Cancelled edit form for project ${projectName}!`);
+  //   });
+  // }
 }

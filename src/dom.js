@@ -13,6 +13,7 @@ export default class Dom {
     Handler.openProject('Inbox', document.querySelector('#button-inbox-projects'));
     Dom.loadProjects();
     Handler.openInboxProject();
+    // ProjectEvents.cancelForm();
   }
 
   static loadProjects() {
