@@ -44,10 +44,14 @@ export default class ProjectEvents {
     // inboxProjecatsButton.addEventListener('click', ProjectEvents.openInboxTasks);
     const buttonProjects = document.querySelectorAll('.button-project');
     const buttonDeleteProjects = document.querySelectorAll('.button-delete-project');
-    // const buttonEditProjects = document.querySelectorAll('.button-edit-project');
+    const buttonEditProjects = document.querySelectorAll('.button-edit-project');
 
     buttonProjects.forEach((buttonProject) => {
       buttonProject.addEventListener('click', ProjectEvents.selectedProjectInSidebar);
+    });
+
+    buttonEditProjects.forEach((buttonEditProject) => {
+      buttonEditProject.addEventListener('click', ProjectEvents.openProjectForm);
     });
 
     buttonDeleteProjects.forEach((buttonDeleteProject) => {

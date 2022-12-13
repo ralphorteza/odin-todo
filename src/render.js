@@ -71,7 +71,9 @@ export default class Render {
     taskContainer.append(rightPanel);
 
     projectPreview.append(taskContainer);
-    // tasksList.append(taskContainer);
-    // Dom.initTaskButtons();
+  }
+
+  static aProjectEditForm() {
+
   }
 }

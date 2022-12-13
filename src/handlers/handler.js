@@ -19,6 +19,10 @@ export default class Handler {
     ProjectEvents.openProject(projectName, projectButton);
   }
 
+  static projectForm() {
+    ProjectEvents.forProjectFormButtons();
+  }
+
   static openInboxProject() {
     ProjectEvents.openInboxProject();
   }

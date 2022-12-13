@@ -155,6 +155,31 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
+#form-project-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+  height: auto;
+
+  /* Fixes position to the middle of viewport. */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+
+  z-index: 10;
+  background-color: white;
+
+  cursor: pointer;
+}
+
+#form-project-container.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
 fieldset {
   margin: 0%;
   border: none;

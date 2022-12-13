@@ -4,7 +4,7 @@ import Project from './project';
 export default class ProjectsList {
   constructor() {
     this.projects = [];
-    this.projects.push(new Project('Inbox', 'ADRE'));
+    this.projects.push(new Project('Inbox'));
   }
 
   setProjects(projects) {
