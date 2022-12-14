@@ -43,15 +43,27 @@ export default class FormEvents {
 
   static createTask(event) {
     event.preventDefault();
+    const overlay = document.querySelector('#overlay');
+    const formContainer = document.querySelector('#form-container');
     const projectName = document.querySelector('#project-name-header').textContent;
     const taskName = document.querySelector('#task-title').value;
     const taskDate = document.querySelector('#task-date').value;
 
-    Storage.addTask(projectName, new Task(taskName, taskDate));
-    // Storage.setTaskDate(projectName, taskName, taskDate);
+    if (taskName === '') {
+      console.log('task name cannot be empty!');
+      return;
+    }
 
+    if (Storage.getProjectsList().getProject(projectName).contains(taskName)) {
+      console.log(`task name ${taskName} already exist in this project!`);
+      return;
+    }
+
+    Storage.addTask(projectName, new Task(taskName, taskDate));
     Render.aTaskCard(taskName, taskDate);
 
+    overlay.classList.remove('active');
+    formContainer.classList.remove('active');
     console.log(`Task created in project ${projectName}!`);
   }
 
@@ -64,17 +76,4 @@ export default class FormEvents {
       deleteTaskButton.addEventListener('click', TaskEvents.deleteTask);
     });
   }
-
-  // static createTask(event) {
-  //   event.preventDefault();
-  //   // const projectName = document.querySelector('#project-name').textContent;
-  //   const taskName = document.querySelector('#task-title').value;
-  //   const date = document.querySelector('#task-date').value;
-
-  //   const newTask = new Task(taskName, date);
-  //   Render.aTaskCard(newTask.getName(), newTask.getDate());
-
-  //   document.querySelector('#form-container').classList.remove('active');
-  //   document.querySelector('#overlay').classList.remove('active');
-  // }
 }
