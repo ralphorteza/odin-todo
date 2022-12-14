@@ -13,8 +13,6 @@ export default class Dom {
     Handler.openProject('Inbox', document.querySelector('#button-inbox-projects'));
     Dom.loadProjects();
     Handler.openInboxProject();
-    Dom.loadTasks();
-    // ProjectEvents.cancelForm();
   }
 
   static loadProjects() {
@@ -29,18 +27,6 @@ export default class Dom {
   static loadProject(projectName) {
     Render.aProjectCard(projectName);
     Handler.initProjectButtons();
-    // Dom.loadTasks(projectName);
     console.log(`Project ${projectName} is loaded!`);
-  }
-
-  // TODO: handle task list display onto  main div.
-  static loadTasks() {
-    const taskList = document.querySelector('#task-list');
-    taskList.innerHTML = '';
-    const projectName = document.querySelector('#project-name-header').textContent;
-    Storage.getProjectsList()
-      .getProject(projectName)
-      .getTasks()
-      .forEach((task) => Render.aTaskCard(task.name, task.dueDate));
   }
 }

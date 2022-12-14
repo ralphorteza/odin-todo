@@ -1,6 +1,7 @@
 import Project from '../project';
 import Render from '../render';
 import Storage from '../storage';
+import TaskEvents from './taskevents';
 
 export default class ProjectEvents {
   static createProject() {
@@ -74,7 +75,6 @@ export default class ProjectEvents {
   }
 
   static openProject(projectName, projectButton) {
-    // const projectPreview = document.querySelector('#project-preview');
     const projectNameHeader = document.querySelector('#project-name-header');
     const defaultProjectButtons = document.querySelectorAll('.button-default-project');
     const customProjectButtons = document.querySelectorAll('.button-project');
@@ -83,6 +83,8 @@ export default class ProjectEvents {
     const allProjectButtons = [...defaultProjectButtons, ...customProjectButtons];
     allProjectButtons.forEach((button) => button.classList.remove('active'));
     projectButton.classList.add('active');
+
+    TaskEvents.loadTasks();
   }
 
   // Deletes project from storage and in UI, then loads Inbox content.

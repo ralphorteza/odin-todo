@@ -1,3 +1,6 @@
+import Render from '../render';
+import Storage from '../storage';
+
 export default class TaskEvents {
   // TASK EVENT HANDLERS CODE BLOCKS BELOW. //
 
@@ -15,17 +18,13 @@ export default class TaskEvents {
     });
   }
 
-  // TODO: create edit task function. Currently, prints out task name when pressing edit button.
-  // static editTask(event) {
-  //   const task = event.target.parentElement.parentElement;
-  //   const taskName = task.children[0].children[1].textContent;
-  //   console.log(taskName);
-  // }
-
-  // TODO: Create delete task function.
-  // static deleteTask(event) {
-  //   const task = event.target.parentElement.parentElement;
-  //   // console.log(task);
-  //   task.remove();
-  // }
+  static loadTasks() {
+    const taskList = document.querySelector('#task-list');
+    taskList.innerHTML = '';
+    const projectName = document.querySelector('#project-name-header').textContent;
+    Storage.getProjectsList()
+      .getProject(projectName)
+      .getTasks()
+      .forEach((task) => Render.aTaskCard(task.name, task.dueDate));
+  }
 }
