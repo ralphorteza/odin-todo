@@ -8,7 +8,7 @@ import ProjectEvents from './handlers/projectevents';
 export default class Dom {
   static loadPage() {
     Handler.form();
-    Handler.task();
+    // Handler.task();
     Handler.project();
     Handler.openProject('Inbox', document.querySelector('#button-inbox-projects'));
     Dom.loadProjects();
@@ -28,6 +28,18 @@ export default class Dom {
   static loadProject(projectName) {
     Render.aProjectCard(projectName);
     Handler.initProjectButtons();
+    // Dom.loadTasks(projectName);
     console.log(`${projectName} button created!`);
+  }
+
+  // TODO: handle task list display onto  main div.
+  static loadTasks() {
+    const taskList = document.querySelector('#task-list');
+    taskList.innerHTML = '';
+    const projectName = document.querySelector('#project-name-header').textContent;
+    Storage.getProjectsList()
+      .getProject(projectName)
+      .getTasks()
+      .forEach((task) => console.log(task));
   }
 }

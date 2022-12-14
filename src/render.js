@@ -33,7 +33,7 @@ export default class Render {
 
   static aTaskCard(name, dueDate) {
     // projectPreview used for testing purposes.
-    const projectPreview = document.querySelector('#project-preview');
+    const taskList = document.querySelector('#task-list');
     // const tasksList = document.querySelector('#tasks-list');
 
     const taskContainer = document.createElement('div');
@@ -71,10 +71,6 @@ export default class Render {
     taskContainer.append(leftPanel);
     taskContainer.append(rightPanel);
 
-    projectPreview.append(taskContainer);
-  }
-
-  static aProjectEditForm() {
-
+    taskList.append(taskContainer);
   }
 }

@@ -47,7 +47,7 @@ export default class FormEvents {
     const taskName = document.querySelector('#task-title').value;
     const taskDate = document.querySelector('#task-date').value;
 
-    Storage.addTask(projectName, taskName);
+    Storage.addTask(projectName, new Task(taskName, taskDate));
     // Storage.setTaskDate(projectName, taskName, taskDate);
 
     Render.aTaskCard(taskName, taskDate);
@@ -55,7 +55,7 @@ export default class FormEvents {
     console.log(`Task created in project ${projectName}!`);
   }
 
-  // TODO: initialize task buttons upon task creation.
+  // TODO: initialize task buttons upon task
   static initTaskButtons() {
     // const editTaskButtons = document.querySelector('.button-edit-task');
     const deleteTaskButtons = document.querySelector('.button-delete-task');
