@@ -95,41 +95,79 @@ export default class ProjectEvents {
     buttonInboxProjects.addEventListener('click', ProjectEvents.selectedProjectInSidebar);
   }
 
+  /* FORM PROJECT CODE BLOCKS
+   * The code blocks below contain the logic for editing existing projects
+   * that may need to be renamed.
+  */
   static openForm(event) {
     event.preventDefault();
     document.querySelector('#form-project').reset();
     const overlay = document.querySelector('#overlay');
     const formContainer = document.querySelector('#form-project-container');
     const currentProjectName = document.querySelector('#current-project-title');
-
-    // const buttonCancelProjectEdit = document.querySelector('#button-cancel-project-edit');
     const projectCard = event.target.parentElement.parentElement;
     const projectName = projectCard.children[0].children[0].textContent;
 
     currentProjectName.textContent = projectName;
     currentProjectName.style.display = 'none';
+
     overlay.classList.add('active');
     formContainer.classList.add('active');
 
     console.log(`Openned edit form for project ${projectName}!`);
-    // buttonCancelProjectEdit.addEventListener('click', (e) => ProjectEvents.cancelForm(e, this));
     ProjectEvents.initFormProjectButtons();
   }
 
   static initFormProjectButtons() {
     const buttonCancelProjectEdit = document.querySelector('#button-cancel-project-edit');
+    const buttonSubmitProjectEdit = document.querySelector('#button-rename-project');
 
+    buttonSubmitProjectEdit.addEventListener('click', ProjectEvents.submitForm);
     buttonCancelProjectEdit.addEventListener('click', ProjectEvents.cancelForm);
   }
 
-  static cancelForm() {
-    const currentProjectName = document.querySelector('#current-project-title');
-    const projectName = currentProjectName.textContent;
+  static submitForm(event) {
+    event.preventDefault();
+
     const overlay = document.querySelector('#overlay');
     const formContainer = document.querySelector('#form-project-container');
+    const currentProjectName = document.querySelector('#current-project-title').textContent;
+    const newProjectName = document.querySelector('#project-title').value;
+    const projectCards = document.querySelectorAll('.card-project');
+
+    if (newProjectName === '') {
+      document.querySelector('#project-title').value = '';
+      console.log('New project name cannot be empty!');
+      return;
+    }
+
+    if (Storage.getProjectsList().contains(newProjectName)) {
+      document.querySelector('#project-title').value = '';
+      console.log('The new project name cannot be identical to an existing project!');
+      return;
+    }
+
+    projectCards.forEach((projectCard) => {
+      if (projectCard.getAttribute('id') !== currentProjectName) return;
+      const projectButtonText = projectCard.children[0].children[0];
+      projectCard.setAttribute('id', newProjectName);
+      projectButtonText.textContent = newProjectName;
+    });
+
+    Storage.renameProject(currentProjectName, newProjectName);
+
+    overlay.classList.remove('active');
+    formContainer.classList.remove('active');
+  }
+
+  static cancelForm() {
+    const currentProjectName = document.querySelector('#current-project-title').textContent;
+    const overlay = document.querySelector('#overlay');
+    const formContainer = document.querySelector('#form-project-container');
+
     overlay.classList.remove('active');
     formContainer.classList.remove('active');
 
-    console.log(`Project ${projectName} form cancelled!`);
+    console.log(`Project ${currentProjectName} form cancelled!`);
   }
 }

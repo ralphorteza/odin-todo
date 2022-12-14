@@ -11,6 +11,7 @@ export default class Render {
     projectCard.classList.add('card-project');
     leftPanel.classList.add('left-panel');
     rightPanel.classList.add('right-panel');
+    projectCard.setAttribute('id', name);
     buttonProject.setAttribute('class', 'button-project');
     buttonEditProject.setAttribute('class', 'button-edit-project');
     buttonDeleteProject.setAttribute('class', 'button-delete-project');
