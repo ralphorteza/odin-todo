@@ -97,25 +97,39 @@ export default class ProjectEvents {
 
   static openForm(event) {
     event.preventDefault();
+    document.querySelector('#form-project').reset();
     const overlay = document.querySelector('#overlay');
     const formContainer = document.querySelector('#form-project-container');
-    const buttonCancelProjectEdit = document.querySelector('#button-cancel-project-edit');
+    const currentProjectName = document.querySelector('#current-project-title');
+
+    // const buttonCancelProjectEdit = document.querySelector('#button-cancel-project-edit');
     const projectCard = event.target.parentElement.parentElement;
     const projectName = projectCard.children[0].children[0].textContent;
 
+    currentProjectName.textContent = projectName;
+    currentProjectName.style.display = 'none';
     overlay.classList.add('active');
     formContainer.classList.add('active');
 
     console.log(`Openned edit form for project ${projectName}!`);
-    buttonCancelProjectEdit.addEventListener('click', (e) => ProjectEvents.cancelForm(e, this));
+    // buttonCancelProjectEdit.addEventListener('click', (e) => ProjectEvents.cancelForm(e, this));
+    ProjectEvents.initFormProjectButtons();
   }
 
-  static cancelForm(e, item) {
-    console.log(item);
+  static initFormProjectButtons() {
+    const buttonCancelProjectEdit = document.querySelector('#button-cancel-project-edit');
+
+    buttonCancelProjectEdit.addEventListener('click', ProjectEvents.cancelForm);
+  }
+
+  static cancelForm() {
+    const currentProjectName = document.querySelector('#current-project-title');
+    const projectName = currentProjectName.textContent;
     const overlay = document.querySelector('#overlay');
     const formContainer = document.querySelector('#form-project-container');
-
     overlay.classList.remove('active');
     formContainer.classList.remove('active');
+
+    console.log(`Project ${projectName} form cancelled!`);
   }
 }
