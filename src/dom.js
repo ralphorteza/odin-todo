@@ -30,7 +30,7 @@ export default class Dom {
     Render.aProjectCard(projectName);
     Handler.initProjectButtons();
     // Dom.loadTasks(projectName);
-    console.log(`${projectName} button created!`);
+    console.log(`Project ${projectName} is loaded!`);
   }
 
   // TODO: handle task list display onto  main div.

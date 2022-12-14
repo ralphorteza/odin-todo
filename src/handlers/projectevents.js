@@ -3,7 +3,7 @@ import Render from '../render';
 import Storage from '../storage';
 
 export default class ProjectEvents {
-  static projectEvents() {
+  static createProject() {
     ProjectEvents.addProjectButtons();
   }
 
@@ -36,7 +36,7 @@ export default class ProjectEvents {
     Storage.addProject(new Project(projectName));
     Render.aProjectCard(projectName);
     ProjectEvents.initProjectButtons();
-    console.log(`${projectName} created!`);
+    console.log(`Project ${projectName} is created!`);
   }
 
   static cancelProject() {

@@ -8,7 +8,7 @@ export default class Handler {
   }
 
   static project() {
-    ProjectEvents.projectEvents();
+    ProjectEvents.createProject();
   }
 
   static initProjectButtons() {
