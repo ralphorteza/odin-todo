@@ -33,6 +33,8 @@ export default class ProjectEvents {
       return;
     }
 
+    document.querySelector('#input-add-project').value = '';
+
     Storage.addProject(new Project(projectName));
     Render.aProjectCard(projectName);
     ProjectEvents.initProjectButtons();
