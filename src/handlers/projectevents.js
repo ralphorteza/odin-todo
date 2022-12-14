@@ -124,7 +124,7 @@ export default class ProjectEvents {
     overlay.classList.add('active');
     formContainer.classList.add('active');
 
-    console.log(`Openned edit form for project ${projectName}!`);
+    console.log(`Opened edit form for project ${projectName}!`);
     ProjectEvents.initFormProjectButtons();
   }
 
