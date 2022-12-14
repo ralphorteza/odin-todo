@@ -7,6 +7,12 @@ export default class ProjectEvents {
     ProjectEvents.addProjectButtons();
   }
 
+  /* PROJECT CREATION CODE BLOCKS
+   * The code blocks below handles the creation of new projects. It consists
+   * of event handler buttons 'Add' and 'Cancel' to make a project. When a
+   * new project is added, a project button group is added below and project
+   * data is stored in the localStorage.
+  */
   static addProjectButtons() {
     const buttonAddProject = document.querySelector('#button-add-project');
     const buttonCancelProject = document.querySelector('#button-cancel-project');
@@ -40,8 +46,6 @@ export default class ProjectEvents {
   }
 
   static initProjectButtons() {
-    // const inboxProjectsButton = document.querySelector('#button-inbox-projects');
-    // inboxProjecatsButton.addEventListener('click', ProjectEvents.openInboxTasks);
     const buttonProjects = document.querySelectorAll('.button-project');
     const buttonDeleteProjects = document.querySelectorAll('.button-delete-project');
     const buttonEditProjects = document.querySelectorAll('.button-edit-project');
@@ -59,7 +63,7 @@ export default class ProjectEvents {
     });
   }
 
-  // TODO: when pressed, opens project in main container
+  // TODO: When pressed, opens project in main container.
   static selectedProjectInSidebar(event) {
     const projectName = event.target.textContent;
     console.log(`project button ${projectName} clicked!`);
@@ -102,6 +106,7 @@ export default class ProjectEvents {
   static openForm(event) {
     event.preventDefault();
     document.querySelector('#form-project').reset();
+
     const overlay = document.querySelector('#overlay');
     const formContainer = document.querySelector('#form-project-container');
     const currentProjectName = document.querySelector('#current-project-title');
@@ -110,6 +115,7 @@ export default class ProjectEvents {
 
     currentProjectName.textContent = projectName;
     currentProjectName.style.display = 'none';
+    document.querySelector('#project-title').placeholder = projectName;
 
     overlay.classList.add('active');
     formContainer.classList.add('active');
