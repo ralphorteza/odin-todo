@@ -61,6 +61,7 @@ export default class FormEvents {
 
     Storage.addTask(projectName, new Task(taskName, taskDate));
     Render.aTaskCard(taskName, taskDate);
+    TaskEvents.initTaskButtons();
 
     overlay.classList.remove('active');
     formContainer.classList.remove('active');
@@ -68,12 +69,12 @@ export default class FormEvents {
   }
 
   // TODO: initialize task buttons upon task
-  static initTaskButtons() {
-    // const editTaskButtons = document.querySelector('.button-edit-task');
-    const deleteTaskButtons = document.querySelector('.button-delete-task');
+  // static initTaskButtons() {
+  //   // const editTaskButtons = document.querySelector('.button-edit-task');
+  //   const deleteTaskButtons = document.querySelector('.button-delete-task');
 
-    deleteTaskButtons.forEach((deleteTaskButton) => {
-      deleteTaskButton.addEventListener('click', TaskEvents.deleteTask);
-    });
-  }
+  //   deleteTaskButtons.forEach((deleteTaskButton) => {
+  //     deleteTaskButton.addEventListener('click', TaskEvents.deleteTask);
+  //   });
+  // }
 }
