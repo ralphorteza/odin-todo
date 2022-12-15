@@ -114,8 +114,20 @@ export default class TaskEvents {
       return;
     }
 
+    // Testing purposes: check if task name changes.
+    const taskCards = document.querySelectorAll('.task');
+    taskCards.forEach((taskCard) => {
+      const taskName = taskCard.children[0].children[1];
+      if (currentTaskName !== taskName.textContent) return;
+      taskName.textContent = '';
+      taskName.textContent = String(newTaskName);
+    });
+
+    Storage.renameTask(projectName, currentTaskName, newTaskName);
+
     overlay.classList.remove('active');
     editTaskForm.classList.remove('active');
-    console.log(`Submit editing task ${currentTaskName} in project ${projectName}!`);
+    console.log(`Submit edited task ${currentTaskName} in project ${projectName}!`);
+    console.log(`Task name changed from ${currentTaskName} to ${newTaskName}!`);
   }
 }
