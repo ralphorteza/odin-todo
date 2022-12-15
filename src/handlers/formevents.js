@@ -65,16 +65,7 @@ export default class FormEvents {
 
     overlay.classList.remove('active');
     formContainer.classList.remove('active');
+    document.querySelector('#form').reset();
     console.log(`Task created in project ${projectName}!`);
   }
-
-  // TODO: initialize task buttons upon task
-  // static initTaskButtons() {
-  //   // const editTaskButtons = document.querySelector('.button-edit-task');
-  //   const deleteTaskButtons = document.querySelector('.button-delete-task');
-
-  //   deleteTaskButtons.forEach((deleteTaskButton) => {
-  //     deleteTaskButton.addEventListener('click', TaskEvents.deleteTask);
-  //   });
-  // }
 }

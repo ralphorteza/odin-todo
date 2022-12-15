@@ -61,11 +61,16 @@ export default class TaskEvents {
     overlay.classList.add('active');
     editTaskForm.classList.add('active');
 
-    // const editTaskButton = document.querySelector('#create-edit-task');
-    const cancelEditTaskButton = document.querySelector('#cancel-edit-task');
     console.log(`Editing task ${taskName} in project ${projectName}!`);
+    TaskEvents.initEditTaskButtons();
+  }
+
+  static initEditTaskButtons() {
+    const editTaskButton = document.querySelector('#create-edit-task');
+    const cancelEditTaskButton = document.querySelector('#cancel-edit-task');
 
     cancelEditTaskButton.addEventListener('click', TaskEvents.cancelTaskEdit);
+    editTaskButton.addEventListener('click', TaskEvents.submitTaskEdit);
   }
 
   static cancelTaskEdit() {
@@ -77,5 +82,40 @@ export default class TaskEvents {
     overlay.classList.remove('active');
     editTaskForm.classList.remove('active');
     console.log(`Cancelled editing task ${currentTaskName} in project ${projectName}!`);
+  }
+
+  // TODO: Create a functioning edit task submission with logic.
+  static submitTaskEdit(event) {
+    event.preventDefault();
+    const overlay = document.querySelector('#overlay');
+    const editTaskForm = document.querySelector('#form-edit-task-container');
+    const currentTaskName = document.querySelector('#current-task-name').textContent;
+    const projectName = document.querySelector('#project-name-header').textContent;
+    const newTaskName = document.querySelector('#edit-task-title').value;
+    const newDueDate = document.querySelector('#edit-task-date').value;
+    const currentDate = Storage
+      .getProjectsList()
+      .getProject(projectName)
+      .getTask(currentTaskName)
+      .getDate();
+
+    console.log(`Current task name: ${currentTaskName}`);
+    console.log(`Current due date of task: ${currentDate}`);
+
+    if (newTaskName === '') {
+      console.log('New task name cannot be empty!');
+      return;
+    }
+
+    if ((Storage.getProjectsList().getProject(projectName).contains(newTaskName))
+        && (currentDate === newDueDate)
+    ) {
+      console.log('No changes have been made!');
+      return;
+    }
+
+    overlay.classList.remove('active');
+    editTaskForm.classList.remove('active');
+    console.log(`Submit editing task ${currentTaskName} in project ${projectName}!`);
   }
 }
