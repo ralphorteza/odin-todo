@@ -84,10 +84,11 @@ export default class TaskEvents {
     console.log(`Cancelled editing task ${currentTaskName} in project ${projectName}!`);
   }
 
-  // TODO: Create a functioning edit task submission with logic.
+  // TODO: work logic for validating existing taskName
   static submitTaskEdit(event) {
     event.preventDefault();
     const overlay = document.querySelector('#overlay');
+    const formEditTask = document.querySelector('#form-edit-task');
     const editTaskForm = document.querySelector('#form-edit-task-container');
     const currentTaskName = document.querySelector('#current-task-name').textContent;
     const projectName = document.querySelector('#project-name-header').textContent;
@@ -107,26 +108,29 @@ export default class TaskEvents {
       return;
     }
 
-    if ((Storage.getProjectsList().getProject(projectName).contains(newTaskName))
-        && (currentDate === newDueDate)
-    ) {
+    if ((newTaskName === currentTaskName) && (currentDate === newDueDate)) {
       console.log('No changes have been made!');
       return;
     }
 
-    // Testing purposes: check if task name changes.
+    if (Storage.getProjectsList().getProject(projectName).contains(newTaskName)) {
+      console.log('This task name already exist!');
+      return;
+    }
+
     const taskCards = document.querySelectorAll('.task');
     taskCards.forEach((taskCard) => {
       const taskName = taskCard.children[0].children[1];
       if (currentTaskName !== taskName.textContent) return;
-      taskName.textContent = '';
-      taskName.textContent = String(newTaskName);
+      Render.changeTaskName(taskCard, newTaskName);
+      Render.changeDueDate(taskCard, newDueDate);
     });
 
-    Storage.renameTask(projectName, currentTaskName, newTaskName);
+    Storage.editTask(projectName, currentTaskName, newTaskName, newDueDate);
 
     overlay.classList.remove('active');
     editTaskForm.classList.remove('active');
+    formEditTask.reset();
     console.log(`Submit edited task ${currentTaskName} in project ${projectName}!`);
     console.log(`Task name changed from ${currentTaskName} to ${newTaskName}!`);
   }

@@ -73,4 +73,16 @@ export default class Render {
 
     taskList.append(taskContainer);
   }
+
+  static changeTaskName(taskCard, newTaskName) {
+    const currentTaskName = taskCard.children[0].children[1];
+    currentTaskName.textContent = '';
+    currentTaskName.textContent = newTaskName;
+  }
+
+  static changeDueDate(taskCard, newDueDate) {
+    const currentTaskDate = taskCard.children[1].children[0];
+    currentTaskDate.textContent = '';
+    currentTaskDate.textContent = newDueDate;
+  }
 }
