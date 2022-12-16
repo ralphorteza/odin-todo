@@ -55,6 +55,13 @@ export default class Storage {
     Storage.saveProjectsList(projectsList);
   }
 
+  static editTask(projectName, taskName, newTaskName, newDueDate) {
+    const projectsList = Storage.getProjectsList();
+    projectsList.getProject(projectName).getTask(taskName).setDate(newDueDate);
+    projectsList.getProject(projectName).getTask(taskName).setName(newTaskName);
+    Storage.saveProjectsList(projectsList);
+  }
+
   static renameTask(projectName, taskName, newTaskName) {
     const projectsList = Storage.getProjectsList();
     projectsList.getProject(projectName).getTask(taskName).setName(newTaskName);
