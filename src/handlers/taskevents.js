@@ -34,14 +34,17 @@ export default class TaskEvents {
     const projectName = document.querySelector('#project-name-header').textContent;
     const taskCard = event.target.parentElement.parentElement;
     const taskName = taskCard.children[0].children[1].textContent;
+    const taskID = taskCard.children[2].textContent;
 
-    Storage.deleteTask(projectName, taskName);
+    // Storage.deleteTask(projectName, taskName);
+    Storage.deleteTask(projectName, taskID);
     taskCard.remove();
 
     console.log(`delete task ${taskName} in project ${projectName}!`);
   }
 
   static editTaskHandler(event) {
+    const editForm = document.querySelector('#form-edit-task');
     const projectName = document.querySelector('#project-name-header').textContent;
     const taskCard = event.target.parentElement.parentElement;
     const taskName = taskCard.children[0].children[1].textContent;
@@ -53,6 +56,8 @@ export default class TaskEvents {
     const taskDateInput = document.querySelector('#edit-task-date');
     const overlay = document.querySelector('#overlay');
     const editTaskForm = document.querySelector('#form-edit-task-container');
+
+    editForm.reset();
 
     currentTaskName.textContent = taskName;
     currentTaskName.style.display = 'none';
@@ -98,41 +103,46 @@ export default class TaskEvents {
     const currentTaskName = document.querySelector('#current-task-name').textContent;
     const taskID = document.querySelector('#unique-id').textContent;
     const projectName = document.querySelector('#project-name-header').textContent;
-    const newTaskName = document.querySelector('#edit-task-title').value;
     const newDueDate = document.querySelector('#edit-task-date').value;
     const currentDate = Storage
       .getProjectsList()
       .getProject(projectName)
-      .getTask(currentTaskName)
+      .getTask(taskID)
       .getDate();
+
+    let newTaskName = document.querySelector('#edit-task-title').value;
 
     console.log(`Current task name: ${currentTaskName} (id #${taskID})`);
     console.log(`Current due date of task: ${currentDate}`);
 
+    // if (newTaskName === '') {
+    //   console.log('New task name cannot be empty!');
+    //   return;
+    // }
     if (newTaskName === '') {
-      console.log('New task name cannot be empty!');
-      return;
+      newTaskName = currentTaskName;
     }
-
     if ((newTaskName === currentTaskName) && (currentDate === newDueDate)) {
       console.log('No changes have been made!');
       return;
     }
 
-    if (Storage.getProjectsList().getProject(projectName).contains(newTaskName)) {
-      console.log('This task name already exist!');
-      return;
-    }
+    // if (Storage.getProjectsList().getProject(projectName).contains(newTaskName)) {
+    //   console.log('This task name already exist!');
+    //   return;
+    // }
 
     const taskCards = document.querySelectorAll('.task');
     taskCards.forEach((taskCard) => {
-      const taskName = taskCard.children[0].children[1];
-      if (currentTaskName !== taskName.textContent) return;
+      // const taskName = taskCard.children[0].children[1];
+      // if (currentTaskName !== taskName.textContent) return;
+      const idContainer = taskCard.children[2];
+      if (idContainer.textContent !== taskID) return;
       Render.changeTaskName(taskCard, newTaskName);
       Render.changeDueDate(taskCard, newDueDate);
     });
 
-    Storage.editTask(projectName, currentTaskName, newTaskName, newDueDate);
+    Storage.editTask(projectName, taskID, currentTaskName, newTaskName, newDueDate);
 
     overlay.classList.remove('active');
     editTaskForm.classList.remove('active');

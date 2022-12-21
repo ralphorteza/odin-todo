@@ -49,16 +49,16 @@ export default class Storage {
     Storage.saveProjectsList(projectsList);
   }
 
-  static deleteTask(projectName, taskName) {
+  static deleteTask(projectName, taskID) {
     const projectsList = Storage.getProjectsList();
-    projectsList.getProject(projectName).deleteTask(taskName);
+    projectsList.getProject(projectName).deleteTask(taskID);
     Storage.saveProjectsList(projectsList);
   }
 
-  static editTask(projectName, taskName, newTaskName, newDueDate) {
+  static editTask(projectName, taskID, taskName, newTaskName, newDueDate) {
     const projectsList = Storage.getProjectsList();
-    projectsList.getProject(projectName).getTask(taskName).setDate(newDueDate);
-    projectsList.getProject(projectName).getTask(taskName).setName(newTaskName);
+    projectsList.getProject(projectName).getTask(taskID).setDate(newDueDate);
+    projectsList.getProject(projectName).getTask(taskID).setName(newTaskName);
     Storage.saveProjectsList(projectsList);
   }
 

@@ -23,8 +23,9 @@ export default class Project {
     return this.tasks;
   }
 
-  getTask(taskName) {
-    return this.tasks.find((task) => task.getName() === taskName);
+  getTask(taskID) {
+    // return this.tasks.find((task) => task.getName() === taskName);
+    return this.tasks.find((task) => task.getID() === taskID);
   }
 
   contains(taskName) {
@@ -36,7 +37,7 @@ export default class Project {
     this.tasks.push(newTask);
   }
 
-  deleteTask(taskName) {
-    this.tasks = this.tasks.filter((task) => task.name !== taskName);
+  deleteTask(taskID) {
+    this.tasks = this.tasks.filter((task) => task.id !== taskID);
   }
 }
