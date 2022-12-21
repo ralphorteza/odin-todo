@@ -2,6 +2,7 @@ import Task from '../task';
 import Render from '../render';
 import Storage from '../storage';
 import TaskEvents from './taskevents';
+import UniqueID from '../uidgenerator';
 
 export default class FormEvents {
   // FORM EVENT HANDLERS CODE BLOCKS BELOW. //
@@ -48,6 +49,7 @@ export default class FormEvents {
     const projectName = document.querySelector('#project-name-header').textContent;
     const taskName = document.querySelector('#task-title').value;
     const taskDate = document.querySelector('#task-date').value;
+    const taskID = UniqueID.generate();
 
     if (taskName === '') {
       console.log('task name cannot be empty!');
@@ -59,7 +61,7 @@ export default class FormEvents {
       return;
     }
 
-    Storage.addTask(projectName, new Task(taskName, taskDate));
+    Storage.addTask(projectName, new Task(taskName, taskID, taskDate));
     Render.aTaskCard(taskName, taskDate);
     TaskEvents.initTaskButtons();
 
