@@ -3,7 +3,6 @@
 export default class Project {
   constructor(name) {
     this.name = name;
-    // this.id = id;
     this.tasks = [];
   }
 
@@ -24,7 +23,6 @@ export default class Project {
   }
 
   getTask(taskID) {
-    // return this.tasks.find((task) => task.getName() === taskName);
     return this.tasks.find((task) => task.getID() === taskID);
   }
 

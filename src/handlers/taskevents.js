@@ -36,7 +36,6 @@ export default class TaskEvents {
     const taskName = taskCard.children[0].children[1].textContent;
     const taskID = taskCard.children[2].textContent;
 
-    // Storage.deleteTask(projectName, taskName);
     Storage.deleteTask(projectName, taskID);
     taskCard.remove();
 
@@ -94,9 +93,9 @@ export default class TaskEvents {
     console.log(`Cancelled editing task ${currentTaskName} in project ${projectName}!`);
   }
 
-  // TODO: work logic for validating existing taskName
   static submitTaskEdit(event) {
     event.preventDefault();
+    const taskCards = document.querySelectorAll('.task');
     const overlay = document.querySelector('#overlay');
     const formEditTask = document.querySelector('#form-edit-task');
     const editTaskForm = document.querySelector('#form-edit-task-container');
@@ -110,32 +109,22 @@ export default class TaskEvents {
       .getTask(taskID)
       .getDate();
 
-    let newTaskName = document.querySelector('#edit-task-title').value;
+    let newTaskName = document.querySelector('#edit-task-title').value.trim();
+
+    if (newTaskName === '') {
+      newTaskName = currentTaskName;
+    }
+
+    if (Storage.getProjectsList().getProject(projectName).contains(newTaskName)
+    && newTaskName !== currentTaskName) {
+      console.log('This task name already exist!');
+      return;
+    }
 
     console.log(`Current task name: ${currentTaskName} (id #${taskID})`);
     console.log(`Current due date of task: ${currentDate}`);
 
-    // if (newTaskName === '') {
-    //   console.log('New task name cannot be empty!');
-    //   return;
-    // }
-    if (newTaskName === '') {
-      newTaskName = currentTaskName;
-    }
-    if ((newTaskName === currentTaskName) && (currentDate === newDueDate)) {
-      console.log('No changes have been made!');
-      return;
-    }
-
-    // if (Storage.getProjectsList().getProject(projectName).contains(newTaskName)) {
-    //   console.log('This task name already exist!');
-    //   return;
-    // }
-
-    const taskCards = document.querySelectorAll('.task');
     taskCards.forEach((taskCard) => {
-      // const taskName = taskCard.children[0].children[1];
-      // if (currentTaskName !== taskName.textContent) return;
       const idContainer = taskCard.children[2];
       if (idContainer.textContent !== taskID) return;
       Render.changeTaskName(taskCard, newTaskName);

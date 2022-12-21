@@ -47,7 +47,7 @@ export default class FormEvents {
     const overlay = document.querySelector('#overlay');
     const formContainer = document.querySelector('#form-container');
     const projectName = document.querySelector('#project-name-header').textContent;
-    const taskName = document.querySelector('#task-title').value;
+    const taskName = document.querySelector('#task-title').value.trim();
     const taskDate = document.querySelector('#task-date').value;
     const taskID = UniqueID.generate();
 
