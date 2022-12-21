@@ -1,14 +1,10 @@
 import Handler from './handlers/handler';
 import Storage from './storage';
-// import Project from './project';
-// import Task from './task';
 import Render from './render';
-import ProjectEvents from './handlers/projectevents';
 
 export default class Dom {
   static loadPage() {
     Handler.form();
-    // Handler.task();
     Handler.project();
     Handler.openProject('Inbox', document.querySelector('#button-inbox-projects'));
     Dom.loadProjects();

@@ -26,7 +26,6 @@ export default class FormEvents {
   }
 
   static forTaskFormButtons() {
-    // const createTaskButton = document.querySelector('#create-task');
     const cancelTaskButton = document.querySelector('#cancel-task');
     const form = document.querySelector('#form');
 

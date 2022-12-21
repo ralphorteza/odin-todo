@@ -28,13 +28,10 @@ export default class Render {
     projectCard.append(rightPanel);
 
     userProjects.append(projectCard);
-    // Dom.initProjectButtons();
   }
 
   static aTaskCard(name, id, dueDate) {
-    // projectPreview used for testing purposes.
     const taskList = document.querySelector('#task-list');
-    // const tasksList = document.querySelector('#tasks-list');
 
     const taskContainer = document.createElement('div');
     const idContainer = document.createElement('p');

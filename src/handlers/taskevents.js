@@ -16,7 +16,7 @@ export default class TaskEvents {
     TaskEvents.initTaskButtons();
   }
 
-  // TODO: Figure out eventlistener functions for task buttons.
+  // TODO: Add task card listeners like radio button, selection, etc.
   static initTaskButtons() {
     const taskEditButtons = document.querySelectorAll('.button-edit-task');
     const taskDeleteButtons = document.querySelectorAll('.button-delete-task');
