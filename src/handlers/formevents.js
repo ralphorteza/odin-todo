@@ -62,7 +62,7 @@ export default class FormEvents {
     }
 
     Storage.addTask(projectName, new Task(taskName, taskID, taskDate));
-    Render.aTaskCard(taskName, taskDate);
+    Render.aTaskCard(taskName, taskID, taskDate);
     TaskEvents.initTaskButtons();
 
     overlay.classList.remove('active');

@@ -11,12 +11,12 @@ export default class TaskEvents {
     Storage.getProjectsList()
       .getProject(projectName)
       .getTasks()
-      .forEach((task) => Render.aTaskCard(task.name, task.dueDate));
+      .forEach((task) => Render.aTaskCard(task.name, task.id, task.dueDate));
 
     TaskEvents.initTaskButtons();
   }
 
-  // TODO: Figure out eventlistner functions for task buttons.
+  // TODO: Figure out eventlistener functions for task buttons.
   static initTaskButtons() {
     const taskEditButtons = document.querySelectorAll('.button-edit-task');
     const taskDeleteButtons = document.querySelectorAll('.button-delete-task');
@@ -46,7 +46,9 @@ export default class TaskEvents {
     const taskCard = event.target.parentElement.parentElement;
     const taskName = taskCard.children[0].children[1].textContent;
     const taskDate = taskCard.children[1].children[0].textContent;
+    const taskID = taskCard.children[2].textContent;
     const currentTaskName = document.querySelector('#current-task-name');
+    const taskIDContainer = document.querySelector('#unique-id');
     const taskNameInput = document.querySelector('#edit-task-title');
     const taskDateInput = document.querySelector('#edit-task-date');
     const overlay = document.querySelector('#overlay');
@@ -55,13 +57,16 @@ export default class TaskEvents {
     currentTaskName.textContent = taskName;
     currentTaskName.style.display = 'none';
 
+    taskIDContainer.textContent = taskID;
+    taskIDContainer.style.display = 'none';
+
     taskNameInput.placeholder = taskName;
     taskDateInput.value = taskDate;
 
     overlay.classList.add('active');
     editTaskForm.classList.add('active');
 
-    console.log(`Editing task ${taskName} in project ${projectName}!`);
+    console.log(`Editing task ${taskName} (id #${taskID}) in project ${projectName}!`);
     TaskEvents.initEditTaskButtons();
   }
 
@@ -91,6 +96,7 @@ export default class TaskEvents {
     const formEditTask = document.querySelector('#form-edit-task');
     const editTaskForm = document.querySelector('#form-edit-task-container');
     const currentTaskName = document.querySelector('#current-task-name').textContent;
+    const taskID = document.querySelector('#unique-id').textContent;
     const projectName = document.querySelector('#project-name-header').textContent;
     const newTaskName = document.querySelector('#edit-task-title').value;
     const newDueDate = document.querySelector('#edit-task-date').value;
@@ -100,7 +106,7 @@ export default class TaskEvents {
       .getTask(currentTaskName)
       .getDate();
 
-    console.log(`Current task name: ${currentTaskName}`);
+    console.log(`Current task name: ${currentTaskName} (id #${taskID})`);
     console.log(`Current due date of task: ${currentDate}`);
 
     if (newTaskName === '') {

@@ -31,12 +31,13 @@ export default class Render {
     // Dom.initProjectButtons();
   }
 
-  static aTaskCard(name, dueDate) {
+  static aTaskCard(name, id, dueDate) {
     // projectPreview used for testing purposes.
     const taskList = document.querySelector('#task-list');
     // const tasksList = document.querySelector('#tasks-list');
 
     const taskContainer = document.createElement('div');
+    const idContainer = document.createElement('p');
     const leftPanel = document.createElement('div');
     const rightPanel = document.createElement('div');
 
@@ -57,6 +58,9 @@ export default class Render {
 
     checkBox.setAttribute('type', 'checkbox');
 
+    idContainer.textContent = id;
+    idContainer.style.display = 'none';
+
     nameContainer.textContent = name;
     dateContainer.textContent = dueDate;
     editBtn.textContent = 'edit';
@@ -70,6 +74,7 @@ export default class Render {
 
     taskContainer.append(leftPanel);
     taskContainer.append(rightPanel);
+    taskContainer.append(idContainer);
 
     taskList.append(taskContainer);
   }
