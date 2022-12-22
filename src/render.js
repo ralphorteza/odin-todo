@@ -30,7 +30,7 @@ export default class Render {
     userProjects.append(projectCard);
   }
 
-  static aTaskCard(name, id, dueDate) {
+  static aTaskCard(name, id, status, dueDate) {
     const taskList = document.querySelector('#task-list');
 
     const taskContainer = document.createElement('div');
@@ -50,10 +50,15 @@ export default class Render {
     rightPanel.classList.add('right-panel');
     nameContainer.classList.add('task-name');
     dateContainer.classList.add('date');
+    checkBox.classList.add('task-status');
     editBtn.classList.add('button-edit-task');
     deleteBtn.classList.add('button-delete-task');
 
     checkBox.setAttribute('type', 'checkbox');
+    // console.log(status);
+    if (status === true) {
+      checkBox.setAttribute('checked', 'true');
+    }
 
     idContainer.textContent = id;
     idContainer.style.display = 'none';

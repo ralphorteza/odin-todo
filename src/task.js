@@ -1,7 +1,8 @@
 export default class Task {
-  constructor(name, id, dueDate = 'No Date') {
+  constructor(name, id, status, dueDate = 'No Date') {
     this.name = name;
     this.id = id;
+    this.status = status;
     this.dueDate = dueDate;
   }
 
@@ -11,6 +12,10 @@ export default class Task {
 
   setDate(dueDate) {
     this.dueDate = dueDate;
+  }
+
+  setStatus(status) {
+    this.status = status;
   }
 
   getName() {

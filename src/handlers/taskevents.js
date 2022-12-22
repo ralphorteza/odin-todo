@@ -11,15 +11,20 @@ export default class TaskEvents {
     Storage.getProjectsList()
       .getProject(projectName)
       .getTasks()
-      .forEach((task) => Render.aTaskCard(task.name, task.id, task.dueDate));
+      .forEach((task) => Render.aTaskCard(task.name, task.id, task.status, task.dueDate));
 
     TaskEvents.initTaskButtons();
   }
 
   // TODO: Add task card listeners like radio button, selection, etc.
   static initTaskButtons() {
+    const taskCheckboxInputs = document.querySelectorAll('.task-status');
     const taskEditButtons = document.querySelectorAll('.button-edit-task');
     const taskDeleteButtons = document.querySelectorAll('.button-delete-task');
+
+    taskCheckboxInputs.forEach((taskCheckboxInput) => {
+      taskCheckboxInput.addEventListener('click', TaskEvents.updateTaskStatus);
+    });
 
     taskEditButtons.forEach((taskEditButton) => {
       taskEditButton.addEventListener('click', TaskEvents.editTaskHandler);
@@ -28,6 +33,18 @@ export default class TaskEvents {
     taskDeleteButtons.forEach((taskDeleteButton) => {
       taskDeleteButton.addEventListener('click', TaskEvents.deleteTask);
     });
+  }
+
+  // TODO: add update completion task function
+  static updateTaskStatus(event) {
+    const projectName = document.querySelector('#project-name-header').textContent;
+    const taskCard = event.target.parentElement.parentElement;
+    const taskName = taskCard.children[0].children[1].textContent;
+    const taskID = taskCard.children[2].textContent;
+    const taskStatus = event.target.checked;
+
+    Storage.updateTaskStatus(projectName, taskID, taskStatus);
+    // console.log(event.target.checked);
   }
 
   static deleteTask(event) {

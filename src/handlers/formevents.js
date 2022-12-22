@@ -48,6 +48,7 @@ export default class FormEvents {
     const projectName = document.querySelector('#project-name-header').textContent;
     const taskName = document.querySelector('#task-title').value.trim();
     const taskDate = document.querySelector('#task-date').value;
+    const taskStatus = false;
     const taskID = UniqueID.generate();
 
     if (taskName === '') {
@@ -60,8 +61,8 @@ export default class FormEvents {
       return;
     }
 
-    Storage.addTask(projectName, new Task(taskName, taskID, taskDate));
-    Render.aTaskCard(taskName, taskID, taskDate);
+    Storage.addTask(projectName, new Task(taskName, taskID, taskStatus, taskDate));
+    Render.aTaskCard(taskName, taskID, taskStatus, taskDate);
     TaskEvents.initTaskButtons();
 
     overlay.classList.remove('active');
