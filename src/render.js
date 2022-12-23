@@ -30,7 +30,7 @@ export default class Render {
     userProjects.append(projectCard);
   }
 
-  static aTaskCard(name, id, status, dueDate) {
+  static aTaskCard(name, id, status, priority, dueDate) {
     const taskList = document.querySelector('#task-list');
 
     const taskContainer = document.createElement('div');
@@ -40,17 +40,21 @@ export default class Render {
 
     const checkBox = document.createElement('input');
     const nameContainer = document.createElement('p');
-    const dateContainer = document.createElement('p');
+    const priorityContainer = document.createElement('p');
 
+    const dateContainer = document.createElement('p');
     const editBtn = document.createElement('button');
     const deleteBtn = document.createElement('button');
 
     taskContainer.classList.add('task');
     leftPanel.classList.add('left-panel');
     rightPanel.classList.add('right-panel');
-    nameContainer.classList.add('task-name');
-    dateContainer.classList.add('date');
+
     checkBox.classList.add('task-status');
+    nameContainer.classList.add('task-name');
+    priorityContainer.classList.add('task-priority');
+
+    dateContainer.classList.add('date');
     editBtn.classList.add('button-edit-task');
     deleteBtn.classList.add('button-delete-task');
 
@@ -64,12 +68,16 @@ export default class Render {
     idContainer.style.display = 'none';
 
     nameContainer.textContent = name;
+    priorityContainer.textContent = priority;
+
     dateContainer.textContent = dueDate;
     editBtn.textContent = 'edit';
     deleteBtn.textContent = 'delete';
 
     leftPanel.append(checkBox);
     leftPanel.append(nameContainer);
+    leftPanel.append(priorityContainer);
+
     rightPanel.append(dateContainer);
     rightPanel.append(editBtn);
     rightPanel.append(deleteBtn);
@@ -91,5 +99,11 @@ export default class Render {
     const currentTaskDate = taskCard.children[1].children[0];
     currentTaskDate.textContent = '';
     currentTaskDate.textContent = newDueDate;
+  }
+
+  static changeTaskPriority(taskCard, newTaskPriority) {
+    const currentTaskPriority = taskCard.children[0].children[2];
+    currentTaskPriority.textContent = '';
+    currentTaskPriority.textContent = newTaskPriority;
   }
 }

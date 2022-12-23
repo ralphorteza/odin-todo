@@ -61,9 +61,19 @@ export default class Storage {
     Storage.saveProjectsList(projectsList);
   }
 
-  static editTask(projectName, taskID, taskName, newTaskName, newDueDate) {
+  static editTask(
+    projectName,
+    taskID,
+    taskName,
+    newTaskName,
+    newTaskPriority,
+    newDescription,
+    newDueDate,
+  ) {
     const projectsList = Storage.getProjectsList();
     projectsList.getProject(projectName).getTask(taskID).setDate(newDueDate);
+    projectsList.getProject(projectName).getTask(taskID).setPriority(newTaskPriority);
+    projectsList.getProject(projectName).getTask(taskID).setDescription(newDescription);
     projectsList.getProject(projectName).getTask(taskID).setName(newTaskName);
     Storage.saveProjectsList(projectsList);
   }

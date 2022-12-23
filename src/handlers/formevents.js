@@ -49,6 +49,8 @@ export default class FormEvents {
     const taskName = document.querySelector('#task-title').value.trim();
     const taskDate = document.querySelector('#task-date').value;
     const taskStatus = false;
+    const taskPriority = document.querySelector('#task-priority').value;
+    const taskDescription = document.querySelector('#task-description').value;
     const taskID = UniqueID.generate();
 
     if (taskName === '') {
@@ -61,8 +63,13 @@ export default class FormEvents {
       return;
     }
 
-    Storage.addTask(projectName, new Task(taskName, taskID, taskStatus, taskDate));
-    Render.aTaskCard(taskName, taskID, taskStatus, taskDate);
+    console.log(`priority is ${taskPriority}`);
+
+    Storage.addTask(
+      projectName,
+      new Task(taskName, taskID, taskStatus, taskPriority, taskDescription, taskDate),
+    );
+    Render.aTaskCard(taskName, taskID, taskStatus, taskPriority, taskDate);
     TaskEvents.initTaskButtons();
 
     overlay.classList.remove('active');

@@ -11,7 +11,13 @@ export default class TaskEvents {
     Storage.getProjectsList()
       .getProject(projectName)
       .getTasks()
-      .forEach((task) => Render.aTaskCard(task.name, task.id, task.status, task.dueDate));
+      .forEach((task) => Render.aTaskCard(
+        task.name,
+        task.id,
+        task.status,
+        task.priority,
+        task.dueDate,
+      ));
 
     TaskEvents.initTaskButtons();
   }
@@ -39,7 +45,7 @@ export default class TaskEvents {
   static updateTaskStatus(event) {
     const projectName = document.querySelector('#project-name-header').textContent;
     const taskCard = event.target.parentElement.parentElement;
-    const taskName = taskCard.children[0].children[1].textContent;
+    // const taskName = taskCard.children[0].children[1].textContent;
     const taskID = taskCard.children[2].textContent;
     const taskStatus = event.target.checked;
 
@@ -64,6 +70,7 @@ export default class TaskEvents {
     const projectName = document.querySelector('#project-name-header').textContent;
     const taskCard = event.target.parentElement.parentElement;
     const taskName = taskCard.children[0].children[1].textContent;
+    const taskPriority = taskCard.children[0].children[2].textContent;
     const taskDate = taskCard.children[1].children[0].textContent;
     const taskID = taskCard.children[2].textContent;
     const currentTaskName = document.querySelector('#current-task-name');
@@ -72,6 +79,14 @@ export default class TaskEvents {
     const taskDateInput = document.querySelector('#edit-task-date');
     const overlay = document.querySelector('#overlay');
     const editTaskForm = document.querySelector('#form-edit-task-container');
+
+    const taskPriorityInput = document.querySelector('#edit-task-priority');
+    const taskDescriptionInput = document.querySelector('#edit-task-description');
+    const taskDescription = Storage
+      .getProjectsList()
+      .getProject(projectName)
+      .getTask(taskID)
+      .getDescription();
 
     editForm.reset();
 
@@ -83,6 +98,8 @@ export default class TaskEvents {
 
     taskNameInput.placeholder = taskName;
     taskDateInput.value = taskDate;
+    taskPriorityInput.value = taskPriority;
+    taskDescriptionInput.value = taskDescription;
 
     overlay.classList.add('active');
     editTaskForm.classList.add('active');
@@ -120,6 +137,8 @@ export default class TaskEvents {
     const taskID = document.querySelector('#unique-id').textContent;
     const projectName = document.querySelector('#project-name-header').textContent;
     const newDueDate = document.querySelector('#edit-task-date').value;
+    const newTaskPriority = document.querySelector('#edit-task-priority').value;
+    const newTaskDescription = document.querySelector('#edit-task-description').value;
     const currentDate = Storage
       .getProjectsList()
       .getProject(projectName)
@@ -145,10 +164,19 @@ export default class TaskEvents {
       const idContainer = taskCard.children[2];
       if (idContainer.textContent !== taskID) return;
       Render.changeTaskName(taskCard, newTaskName);
+      Render.changeTaskPriority(taskCard, newTaskPriority);
       Render.changeDueDate(taskCard, newDueDate);
     });
 
-    Storage.editTask(projectName, taskID, currentTaskName, newTaskName, newDueDate);
+    Storage.editTask(
+      projectName,
+      taskID,
+      currentTaskName,
+      newTaskName,
+      newTaskPriority,
+      newTaskDescription,
+      newDueDate,
+    );
 
     overlay.classList.remove('active');
     editTaskForm.classList.remove('active');
